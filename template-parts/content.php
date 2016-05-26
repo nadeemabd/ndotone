@@ -38,6 +38,8 @@
 				'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'nadtheme' ),
 				'after'  => '</div>',
 			) );
+
+//		the_excerpt();
 		?>
 	</div><!-- .entry-content -->
 
