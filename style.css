@@ -340,6 +340,7 @@ html {
 body {
   background: #fff;
   /* Fallback for when there is no custom background color defined. */
+  direction: ltr;
 }
 
 blockquote, q {
@@ -357,7 +358,7 @@ hr {
 }
 
 ul, ol {
-  margin: 0 3em 1.5em 0;
+  margin: 0 0 1.5em 3em;
 }
 
 ul {
@@ -371,7 +372,7 @@ ol {
 li > ul,
 li > ol {
   margin-bottom: 0;
-  margin-right: 1.5em;
+  margin-left: 1.5em;
 }
 
 dt {
@@ -493,7 +494,7 @@ input[type="color"] {
 }
 
 textarea {
-  padding-right: 3px;
+  padding-left: 3px;
   width: 100%;
 }
 
@@ -525,39 +526,39 @@ a:hover, a:active {
 .main-navigation {
   clear: both;
   display: block;
-  float: right;
+  float: left;
   width: 100%;
 }
 .main-navigation ul {
   display: none;
   list-style: none;
   margin: 0;
-  padding-right: 0;
+  padding-left: 0;
 }
 .main-navigation ul ul {
   box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
-  float: right;
+  float: left;
   position: absolute;
   top: 1.5em;
-  right: -999em;
+  left: -999em;
   z-index: 99999;
 }
 .main-navigation ul ul ul {
-  right: -999em;
+  left: -999em;
   top: 0;
 }
 .main-navigation ul ul li:hover > ul, .main-navigation ul ul li.focus > ul {
-  right: 100%;
+  left: 100%;
 }
 .main-navigation ul ul a {
   width: 200px;
 }
 .main-navigation ul li:hover > ul,
 .main-navigation ul li.focus > ul {
-  right: auto;
+  left: auto;
 }
 .main-navigation li {
-  float: right;
+  float: left;
   position: relative;
 }
 .main-navigation a {
@@ -589,14 +590,14 @@ a:hover, a:active {
 .comment-navigation .nav-previous,
 .posts-navigation .nav-previous,
 .post-navigation .nav-previous {
-  float: right;
+  float: left;
   width: 50%;
 }
 .comment-navigation .nav-next,
 .posts-navigation .nav-next,
 .post-navigation .nav-next {
-  float: left;
-  text-align: left;
+  float: right;
+  text-align: right;
   width: 50%;
 }
 
@@ -622,7 +623,7 @@ a:hover, a:active {
   font-size: 0.875rem;
   font-weight: bold;
   height: auto;
-  right: 5px;
+  left: 5px;
   line-height: normal;
   padding: 15px 23px 14px;
   text-decoration: none;
@@ -642,21 +643,21 @@ a:hover, a:active {
 --------------------------------------------------------------*/
 .alignleft {
   display: inline;
-  float: right;
-  margin-left: 1.5em;
+  float: left;
+  margin-right: 1.5em;
 }
 
 .alignright {
   display: inline;
-  float: left;
-  margin-right: 1.5em;
+  float: right;
+  margin-left: 1.5em;
 }
 
 .aligncenter {
   clear: both;
   display: block;
-  margin-right: auto;
   margin-left: auto;
+  margin-right: auto;
 }
 
 /*--------------------------------------------------------------
@@ -796,8 +797,8 @@ object {
 }
 .wp-caption img[class*="wp-image-"] {
   display: block;
-  margin-right: auto;
   margin-left: auto;
+  margin-right: auto;
 }
 .wp-caption .wp-caption-text {
   margin: 0.8075em 0;
@@ -855,4 +856,25 @@ object {
 .site-content {
   display: -ms-flexbox;
   display: flex;
+}
+
+.content-area {
+  -ms-flex-order: 2;
+      order: 2;
+  background-color: yellow;
+  max-width: 50%;
+}
+
+.sidebar-left {
+  -ms-flex-order: 1;
+      order: 1;
+  background-color: red;
+  max-width: 25%;
+}
+
+.sidebar-right {
+  -ms-flex-order: 3;
+      order: 3;
+  background-color: blue;
+  max-width: 25%;
 }
