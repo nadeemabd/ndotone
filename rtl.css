@@ -641,13 +641,12 @@ a:hover, a:active {
         justify-content: center;
   }
   .main-navigation ul ul {
+    border-bottom: 1px solid #d1d1d1;
+    display: block;
+    right: -999em;
+    margin: 0;
     position: absolute;
     z-index: 99999;
-    -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
-    -ms-flex-pack: justify;
-        justify-content: space-between;
-    background-color: #303B57;
   }
   .main-navigation ul ul ul {
     top: 0;
@@ -675,8 +674,8 @@ a:hover, a:active {
   }
   .main-navigation ul li:hover > ul,
   .main-navigation ul li.focus > ul {
-    display: -ms-flexbox;
-    display: flex;
+    right: 0;
+    left: auto;
   }
   .main-navigation ul .menu-item-has-children > a:after {
     content: '\f107';
