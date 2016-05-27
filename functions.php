@@ -168,6 +168,18 @@ function nadtheme_scripts()
 
 add_action('wp_enqueue_scripts', 'nadtheme_scripts');
 
+function get_custom_header_image() {
+    if (!has_post_thumbnail()) :
+        if (get_header_image()) {
+            header_image();
+        } else {
+            echo get_template_directory_uri() . '/images/header.jpg';
+        } // End header image check.
+    else :
+        echo the_post_thumbnail_url();
+    endif; // End header image check.
+}
+
 /**
  * Implement the Custom Header feature.
  */
