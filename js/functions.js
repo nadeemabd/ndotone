@@ -61,7 +61,7 @@
         menuToggle.add(siteNavigation).attr('aria-expanded', 'false');
 
         menuToggle.on('click.nadtheme', function () {
-            //$(this).add(primaryMenu).toggleClass('toggled');
+            $( this ).add( siteNavigation ).toggleClass( 'toggled' );
 
             // jscs:disable
             $(this).add(siteNavigation).attr('aria-expanded', $(this).add(siteNavigation).attr('aria-expanded') === 'false' ? 'true' : 'false');
@@ -116,7 +116,7 @@
                 menuToggle.attr('aria-expanded', 'false');
             }
 
-            if (siteHeaderMenu.hasClass('toggled')) {
+            if (siteNavigation.hasClass('toggled')) {
                 siteNavigation.attr('aria-expanded', 'true');
             } else {
                 siteNavigation.attr('aria-expanded', 'false');
@@ -127,8 +127,8 @@
             menuToggle.removeAttr('aria-expanded');
             siteNavigation.removeAttr('aria-expanded');
             menuToggle.removeAttr('aria-controls');
-            if (siteHeaderMenu.hasClass('toggled')) {
-                $(this).add(siteHeaderMenu).removeClass('toggled');
+            if (siteNavigation.hasClass('toggled')) {
+                $(this).add(siteNavigation).removeClass('toggled');
                 $(this).add(menuToggle).removeClass('toggled');
             }
         }
