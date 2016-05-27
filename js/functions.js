@@ -6,7 +6,7 @@
  */
 
 (function ($) {
-    var body, masthead, menuToggle, siteNavigation, socialNavigation, siteHeaderMenu, resizeTimer;
+    var body, masthead, menuToggle, siteNavigation, resizeTimer;
 
     function initMainNavigation(container) {
 
@@ -47,9 +47,7 @@
 
     masthead = $('#masthead');
     menuToggle = masthead.find('#menu-toggle');
-    siteHeaderMenu = masthead.find('#site-header-menu');
     siteNavigation = masthead.find('#site-navigation');
-    socialNavigation = masthead.find('#social-navigation');
 
     // Enable menuToggle.
     (function () {
@@ -60,13 +58,13 @@
         }
 
         // Add an initial values for the attribute.
-        menuToggle.add(siteNavigation).add(socialNavigation).attr('aria-expanded', 'false');
+        menuToggle.add(siteNavigation).attr('aria-expanded', 'false');
 
         menuToggle.on('click.nadtheme', function () {
-            $(this).add(siteHeaderMenu).toggleClass('toggled');
+            //$(this).add(primaryMenu).toggleClass('toggled');
 
             // jscs:disable
-            $(this).add(siteNavigation).add(socialNavigation).attr('aria-expanded', $(this).add(siteNavigation).add(socialNavigation).attr('aria-expanded') === 'false' ? 'true' : 'false');
+            $(this).add(siteNavigation).attr('aria-expanded', $(this).add(siteNavigation).attr('aria-expanded') === 'false' ? 'true' : 'false');
             // jscs:enable
         });
     })();
@@ -120,17 +118,14 @@
 
             if (siteHeaderMenu.hasClass('toggled')) {
                 siteNavigation.attr('aria-expanded', 'true');
-                socialNavigation.attr('aria-expanded', 'true');
             } else {
                 siteNavigation.attr('aria-expanded', 'false');
-                socialNavigation.attr('aria-expanded', 'false');
             }
 
             menuToggle.attr('aria-controls', 'site-navigation social-navigation');
         } else {
             menuToggle.removeAttr('aria-expanded');
             siteNavigation.removeAttr('aria-expanded');
-            socialNavigation.removeAttr('aria-expanded');
             menuToggle.removeAttr('aria-controls');
             if (siteHeaderMenu.hasClass('toggled')) {
                 $(this).add(siteHeaderMenu).removeClass('toggled');
