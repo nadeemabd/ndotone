@@ -34,12 +34,12 @@
                 </p>
             <?php endif ?>
 
-
+            <div class="site-header-menu">
             <?php if (has_nav_menu('primary')): ?>
                 <button id="menu-toggle" class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e('Primary Menu', 'nadtheme'); ?></button>
                 <?php wp_nav_menu(array('theme_location' => 'primary', 'menu_id' => 'primary-menu')); ?>
             <?php endif ?>
-
+            </div>
         </nav><!-- #site-navigation -->
 
         <div class="site-branding">
