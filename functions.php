@@ -41,7 +41,8 @@ if (!function_exists('nadtheme_setup')) :
          *
          * @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
          */
-        add_theme_support('post-thumbnails');
+        add_theme_support( 'post-thumbnails' );
+        set_post_thumbnail_size( 1920, 9999 );
 
         // This theme uses wp_nav_menu() in one location.
         register_nav_menus(array(
@@ -142,11 +143,55 @@ function nadtheme_widgets_init()
 
 add_action('widgets_init', 'nadtheme_widgets_init');
 
+if ( ! function_exists( 'nadtheme_fonts_url' ) ) :
+    /**
+     * Register Google fonts for nadtheme.
+     *
+     * Create your own nadtheme_fonts_url() function to override in a child theme.
+     *
+     * @since nadtheme 1.0
+     *
+     * @return string Google fonts URL for the theme.
+     */
+    function nadtheme_fonts_url() {
+        $fonts_url = '';
+        $fonts     = array();
+        $subsets   = 'latin,latin-ext';
+
+        /* translators: If there are characters in your language that are not supported by Merriweather, translate this to 'off'. Do not translate into your own language. */
+        if ( 'off' !== _x( 'on', 'Merriweather font: on or off', 'twentysixteen' ) ) {
+            $fonts[] = 'Merriweather:400,700,900,400italic,700italic,900italic';
+        }
+
+        /* translators: If there are characters in your language that are not supported by Montserrat, translate this to 'off'. Do not translate into your own language. */
+        if ( 'off' !== _x( 'on', 'Roboto Condensed font: on or off', 'nadtheme' ) ) {
+            $fonts[] = 'Roboto Condensed:400,700';
+        }
+
+        /* translators: If there are characters in your language that are not supported by Inconsolata, translate this to 'off'. Do not translate into your own language. */
+        if ( 'off' !== _x( 'on', 'Inconsolata font: on or off', 'nadtheme' ) ) {
+            $fonts[] = 'Inconsolata:400';
+        }
+
+        if ( $fonts ) {
+            $fonts_url = add_query_arg( array(
+                'family' => urlencode( implode( '|', $fonts ) ),
+                'subset' => urlencode( $subsets ),
+            ), 'https://fonts.googleapis.com/css' );
+        }
+
+        return $fonts_url;
+    }
+endif;
+
 /**
  * Enqueue scripts and styles.
  */
-function nadtheme_scripts()
-{
+function nadtheme_scripts() {
+
+    // Add custom fonts, used in the main stylesheet.
+    wp_enqueue_style( 'nadtheme-fonts', nadtheme_fonts_url(), array(), null );
+
     wp_enqueue_style('nadtheme-style', get_stylesheet_uri());
 
 //    wp_enqueue_script('nadtheme-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20151215', true);
