@@ -78,6 +78,22 @@ function nadtheme_entry_footer() {
 }
 endif;
 
+if ( ! function_exists( 'nadtheme_get_the_categories' ) ) :
+/**
+ * Prints HTML with meta information for the categories.
+ */
+function nadtheme_get_the_categories() {
+	// Hide category and tag text for pages.
+	if ( 'post' === get_post_type() ) {
+		/* translators: used between list items, there is a space after the comma */
+		$categories_list = get_the_category_list( esc_html__( ', ', 'nadtheme' ) );
+		if ( $categories_list && nadtheme_categorized_blog() ) {
+			printf( '<span class="cat-links">' . esc_html__( '%1$s', 'nadtheme' ) . '</span>', $categories_list ); // WPCS: XSS OK.
+		}
+	}
+}
+endif;
+
 /**
  * Returns true if a blog has more than 1 category.
  *
