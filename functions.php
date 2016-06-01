@@ -89,7 +89,7 @@ if (!function_exists('nadtheme_setup')) :
         add_theme_support('custom-header', apply_filters('nadtheme_custom_header_args', array(
             'default-color' => '000000',
             'width' => 1920,
-            'height' => 280,
+            'height' => 600,
             'flex-height' => false,
             'flex-width' => false,
             'default-image' => get_template_directory_uri() . '/images/header.jpg',
@@ -214,15 +214,15 @@ function nadtheme_scripts() {
 add_action('wp_enqueue_scripts', 'nadtheme_scripts');
 
 function get_custom_header_image() {
-    if (!has_post_thumbnail()) :
+//    if (is_feed() || !has_post_thumbnail()) :
         if (get_header_image()) {
             header_image();
         } else {
             echo get_template_directory_uri() . '/images/header.jpg';
         } // End header image check.
-    else :
-        echo the_post_thumbnail_url();
-    endif; // End header image check.
+//    else :
+//        echo the_post_thumbnail_url();
+//    endif; // End header image check.
 }
 
 /**
