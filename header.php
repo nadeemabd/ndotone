@@ -50,7 +50,7 @@
 
             <?php if ( !is_single() && !is_page() && !is_archive() ) : ?>
                 <div class="site-branding">
-
+                <?php nadtheme_the_custom_logo(); ?>
                 <h1 class="site-title">
                     <a href="<?php echo esc_url(home_url('/')); ?>" rel="home"><?php bloginfo('name'); ?></a>
 <!--                    --><?php //bloginfo('name'); ?>
