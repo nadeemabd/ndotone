@@ -110,11 +110,6 @@ dfn {
   font-style: italic;
 }
 
-h1 {
-  font-size: 2em;
-  margin: 0.67em 0;
-}
-
 mark {
   background: #ff0;
   color: #000;
@@ -329,8 +324,8 @@ address {
 pre {
   background: #eee;
   font-family: "Courier 10 Pitch", Courier, monospace;
-  font-size: 9.375px;
-  font-size: 0.9375rem;
+  font-size: 15px;
+  font-size: 1.5rem;
   line-height: 1.6;
   margin-bottom: 1.6em;
   max-width: 100%;
@@ -340,8 +335,8 @@ pre {
 
 code, kbd, tt, var {
   font-family: Monaco, Consolas, "Andale Mono", "DejaVu Sans Mono", monospace;
-  font-size: 9.375px;
-  font-size: 0.9375rem;
+  font-size: 15px;
+  font-size: 1.5rem;
 }
 
 abbr, acronym {
@@ -885,6 +880,23 @@ a:hover, a:active {
   color: #fff;
 }
 
+.hentry {
+  max-width: 60rem;
+  margin: 0 auto;
+}
+
+.site-main {
+  padding: 0 18.47084%;
+}
+
+.alignleft {
+  margin-left: -29.29167%;
+}
+
+.alignright {
+  margin-right: -29.29167%;
+}
+
 /*--------------------------------------------------------------
 ## Asides
 --------------------------------------------------------------*/
@@ -1041,6 +1053,29 @@ object {
       order: 3;
 }
 
+@media screen and (max-width: 1440px) {
+  .site-content {
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+  }
+
+  .content-area {
+    width: 75% !important;
+  }
+
+  .sidebar-left {
+    width: 25%;
+  }
+
+  .sidebar-right {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 1170px) {
+  .content-area {
+    width: 100% !important;
+  }
+}
 /*--------------------------------------------------------------
 # Header
 --------------------------------------------------------------*/
