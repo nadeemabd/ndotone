@@ -37,6 +37,17 @@ if (!function_exists('nadtheme_setup')) :
         add_theme_support('title-tag');
 
         /*
+         * Enable support for custom logo.
+         *
+         *  @since nadtheme1.2
+         */
+        add_theme_support( 'custom-logo', array(
+            'height'      => 240,
+            'width'       => 240,
+            'flex-height' => true,
+        ) );
+
+        /*
          * Enable support for Post Thumbnails on posts and pages.
          *
          * @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
@@ -88,13 +99,22 @@ if (!function_exists('nadtheme_setup')) :
          */
         add_theme_support('custom-header', apply_filters('nadtheme_custom_header_args', array(
             'default-color' => '000000',
+            'default-image' => '/wp-content/themes/nadtheme/images/header.jpg',
             'width' => 1920,
             'height' => 600,
             'flex-height' => false,
             'flex-width' => false,
-            'default-image' => get_template_directory_uri() . '/images/header.jpg',
             'uploads' => true,
         )));
+
+        /*
+         * This theme styles the visual editor to resemble the theme style,
+         * specifically font, colors, icons, and column width.
+         */
+        add_editor_style( array( 'css/editor-style.css', nadtheme_fonts_url() ) );
+
+        // Indicate widget sidebars can use selective refresh in the Customizer.
+        add_theme_support( 'customize-selective-refresh-widgets' );
     }
 endif;
 add_action('after_setup_theme', 'nadtheme_setup');
@@ -108,7 +128,7 @@ add_action('after_setup_theme', 'nadtheme_setup');
  */
 function nadtheme_content_width()
 {
-    $GLOBALS['content_width'] = apply_filters('nadtheme_content_width', 640);
+    $GLOBALS['content_width'] = apply_filters('nadtheme_content_width', 600);
 }
 
 add_action('after_setup_theme', 'nadtheme_content_width', 0);
@@ -159,7 +179,7 @@ if ( ! function_exists( 'nadtheme_fonts_url' ) ) :
         $subsets   = 'latin,latin-ext';
 
         /* translators: If there are characters in your language that are not supported by Merriweather, translate this to 'off'. Do not translate into your own language. */
-        if ( 'off' !== _x( 'on', 'Merriweather font: on or off', 'twentysixteen' ) ) {
+        if ( 'off' !== _x( 'on', 'Merriweather font: on or off', 'nadtheme' ) ) {
             $fonts[] = 'Merriweather:400,700,900,400italic,700italic,900italic';
         }
 
