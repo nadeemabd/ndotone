@@ -25,16 +25,20 @@ function nadtheme_posted_on() {
 	);
 
 	$posted_on = sprintf(
-		esc_html_x( 'Posted on %s', 'post date', 'nadtheme' ),
+		esc_html_x( '%s', 'post date', 'nadtheme' ),
 		'<a href="' . esc_url( get_permalink() ) . '" rel="bookmark">' . $time_string . '</a>'
 	);
 
-	$byline = sprintf(
-		esc_html_x( 'by %s', 'post author', 'nadtheme' ),
-		'<span class="author vcard"><a class="url fn n" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html( get_the_author() ) . '</a></span>'
+	$author_avatar_size = apply_filters( 'nadtheme_author_avatar_size', 49 );
+
+	$byline = sprintf( '<span class="author vcard">%1$s<span class="screen-reader-text">%2$s </span><a class="url fn n" href="%3$s">%4$s</a></span>',
+			get_avatar( get_the_author_meta( 'user_email' ), $author_avatar_size ),
+			_x( 'Author', 'Used before post author name.', 'nadtheme' ),
+			esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ),
+			get_the_author()
 	);
 
-	echo '<span class="posted-on">' . $posted_on . '</span><span class="byline"> ' . $byline . '</span>'; // WPCS: XSS OK.
+	echo '<span class="byline">' . $byline . '</span><span class="posted-on">' . $posted_on . '</span>'; // WPCS: XSS OK.
 
 }
 endif;
@@ -47,15 +51,15 @@ function nadtheme_entry_footer() {
 	// Hide category and tag text for pages.
 	if ( 'post' === get_post_type() ) {
 		/* translators: used between list items, there is a space after the comma */
-		$categories_list = get_the_category_list( esc_html__( ', ', 'nadtheme' ) );
-		if ( $categories_list && nadtheme_categorized_blog() ) {
-			printf( '<span class="cat-links">' . esc_html__( 'Posted in %1$s', 'nadtheme' ) . '</span>', $categories_list ); // WPCS: XSS OK.
-		}
+//		$categories_list = get_the_category_list( esc_html__( ', ', 'nadtheme' ) );
+//		if ( $categories_list && nadtheme_categorized_blog() ) {
+//			printf( '<span class="cat-links">' . esc_html__( 'Posted in %1$s', 'nadtheme' ) . '</span>', $categories_list ); // WPCS: XSS OK.
+//		}
 
 		/* translators: used between list items, there is a space after the comma */
 		$tags_list = get_the_tag_list( '', esc_html__( ', ', 'nadtheme' ) );
 		if ( $tags_list ) {
-			printf( '<span class="tags-links">' . esc_html__( 'Tagged %1$s', 'nadtheme' ) . '</span>', $tags_list ); // WPCS: XSS OK.
+			printf( '<span class="tags-links">' . esc_html__( '%1$s', 'nadtheme' ) . '</span>', $tags_list ); // WPCS: XSS OK.
 		}
 	}
 
@@ -124,6 +128,28 @@ function nadtheme_categorized_blog() {
 	}
 }
 
+if ( ! function_exists( 'nadtheme_excerpt_more' ) && ! is_admin() ) :
+	/**
+	 * Replaces "[...]" (appended to automatically generated excerpts) with ... and
+	 * a 'Continue reading' link.
+	 *
+	 * Create your own nadtheme_excerpt_more() function to override in a child theme.
+	 *
+	 * @since nadtheme 1.0
+	 *
+	 * @return string 'Continue reading' link prepended with an ellipsis.
+	 */
+	function nadtheme_excerpt_more() {
+		$link = sprintf( '<a href="%1$s" class="more-link">%2$s</a>',
+				esc_url( get_permalink( get_the_ID() ) ),
+				/* translators: %s: Name of current post */
+				sprintf( __( 'Continue reading<span class="screen-reader-text"> "%s"</span>', 'nadtheme' ), get_the_title( get_the_ID() ) )
+		);
+		return ' &hellip; ' . $link;
+	}
+	add_filter( 'excerpt_more', 'nadtheme_excerpt_more' );
+endif;
+
 /**
  * Flush out the transients used in nadtheme_categorized_blog.
  */
@@ -136,3 +162,18 @@ function nadtheme_category_transient_flusher() {
 }
 add_action( 'edit_category', 'nadtheme_category_transient_flusher' );
 add_action( 'save_post',     'nadtheme_category_transient_flusher' );
+
+if ( ! function_exists( 'nadtheme_the_custom_logo' ) ) :
+	/**
+	 * Displays the optional custom logo.
+	 *
+	 * Does nothing if the custom logo is not available.
+	 *
+	 * @since nadtheme 1.2
+	 */
+	function nadtheme_the_custom_logo() {
+		if ( function_exists( 'the_custom_logo' ) ) {
+			the_custom_logo();
+		}
+	}
+endif;
