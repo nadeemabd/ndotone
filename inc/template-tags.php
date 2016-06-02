@@ -24,21 +24,25 @@ function nadtheme_posted_on() {
 		esc_html( get_the_modified_date() )
 	);
 
-	$posted_on = sprintf(
-		esc_html_x( '%s', 'post date', 'nadtheme' ),
-		'<a href="' . esc_url( get_permalink() ) . '" rel="bookmark">' . $time_string . '</a>'
-	);
+	$author_avatar_size = apply_filters( 'nadtheme_author_avatar_size', 46 );
 
-	$author_avatar_size = apply_filters( 'nadtheme_author_avatar_size', 49 );
-
-	$byline = sprintf( '<span class="author vcard">%1$s<span class="screen-reader-text">%2$s </span><a class="url fn n" href="%3$s">%4$s</a></span>',
+	$author_avatar = sprintf('<a class="url fn n" href="%3$s">%1s<span class="screen-reader-text">%2$s</span></a>',
 			get_avatar( get_the_author_meta( 'user_email' ), $author_avatar_size ),
 			_x( 'Author', 'Used before post author name.', 'nadtheme' ),
+			esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) )
+	);
+
+	$byline = sprintf( '<span class="author vcard"><a class="url fn n" href="%1$s">%2$s</a></span>',
 			esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ),
 			get_the_author()
 	);
 
-	echo '<span class="byline">' . $byline . '</span><span class="posted-on">' . $posted_on . '</span>'; // WPCS: XSS OK.
+	$posted_on = sprintf(
+			esc_html_x( '%s', 'post date', 'nadtheme' ),
+			'<a href="' . esc_url( get_permalink() ) . '" rel="bookmark">' . $time_string . '</a>'
+	);
+
+	echo '<span class="author-avatar">' . $author_avatar . '</span><span class="byline">' . $byline . '<span class="posted-on">' . $posted_on . '</span></span>'; // WPCS: XSS OK.
 
 }
 endif;
