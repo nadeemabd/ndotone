@@ -24,14 +24,20 @@
         }
 
         if ( 'post' === get_post_type() ) : ?>
-            <div class="entry-meta">
-                <?php nadtheme_posted_on(); ?>
+            <div class="entry-cats">
+                <?php nadtheme_get_the_categories(); ?>
             </div><!-- .entry-meta -->
             <?php
         endif; ?>
     </header><!-- .entry-header -->
 
     <div class="entry-content">
+        <?php if ( 'post' === get_post_type() ) : ?>
+        <div class="entry-meta">
+            <?php nadtheme_posted_on(); ?>
+        </div><!-- .entry-meta -->
+        <?php
+        endif; ?>
         <?php
             the_content();
 
@@ -39,6 +45,10 @@
                 'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'nadtheme' ),
                 'after'  => '</div>',
             ) );
+
+            if ( '' !== get_the_author_meta( 'description' ) ) {
+                get_template_part( 'template-parts/biography' );
+            }
         ?>
     </div><!-- .entry-content -->
 
