@@ -61,7 +61,7 @@ function nadtheme_entry_footer() {
 //		}
 
 		/* translators: used between list items, there is a space after the comma */
-		$tags_list = get_the_tag_list( '', esc_html__( ', ', 'nadtheme' ) );
+		$tags_list = get_the_tag_list( '', esc_html__( '', 'nadtheme' ) );
 		if ( $tags_list ) {
 			printf( '<span class="tags-links">' . esc_html__( '%1$s', 'nadtheme' ) . '</span>', $tags_list ); // WPCS: XSS OK.
 		}
@@ -77,7 +77,7 @@ function nadtheme_entry_footer() {
 	edit_post_link(
 		sprintf(
 			/* translators: %s: Name of current post */
-			esc_html__( 'Edit %s', 'nadtheme' ),
+			esc_html__( ' Edit %s', 'nadtheme' ),
 			the_title( '<span class="screen-reader-text">"', '"</span>', false )
 		),
 		'<span class="edit-link">',
