@@ -30,29 +30,31 @@
             <?php
         endif; ?>
     </header><!-- .entry-header -->
+    <div class="content-wrapper">
+        <div class="entry-content">
+            <?php if ( 'post' === get_post_type() ) : ?>
+            <div class="entry-meta">
+                <?php nadtheme_posted_on(); ?>
+            </div><!-- .entry-meta -->
+            <?php
+            endif; ?>
+            <?php
+                the_content();
 
-    <div class="entry-content">
-        <?php if ( 'post' === get_post_type() ) : ?>
-        <div class="entry-meta">
-            <?php nadtheme_posted_on(); ?>
-        </div><!-- .entry-meta -->
-        <?php
-        endif; ?>
-        <?php
-            the_content();
+                wp_link_pages( array(
+                    'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'nadtheme' ),
+                    'after'  => '</div>',
+                ) );
 
-            wp_link_pages( array(
-                'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'nadtheme' ),
-                'after'  => '</div>',
-            ) );
-
-            if ( '' !== get_the_author_meta( 'description' ) ) {
-                get_template_part( 'template-parts/biography' );
-            }
-        ?>
-    </div><!-- .entry-content -->
-
+            ?>
+        </div><!-- .entry-content -->
+    </div>
     <footer class="entry-footer">
         <?php nadtheme_entry_footer(); ?>
     </footer><!-- .entry-footer -->
+    <?php if ( '' !== get_the_author_meta( 'description' ) ) { ?>
+        <div class="author-info-wrapper">
+            <?php get_template_part( 'template-parts/biography' ); ?>
+        </div>
+    <?php } ?>
 </article><!-- #post-## -->
