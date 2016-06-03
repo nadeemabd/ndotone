@@ -257,6 +257,8 @@ th {
 .site-content {
   display: -ms-flexbox;
   display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 
 .content-area {
@@ -266,6 +268,16 @@ th {
   width: 50%;
 }
 
+@media screen and (max-width: 1440px) {
+  .content-area {
+    width: 75%;
+  }
+}
+@media screen and (max-width: 1170px) {
+  .content-area {
+    width: 100%;
+  }
+}
 .sidebar-left {
   width: 25%;
   background-color: #262626;
@@ -387,7 +399,7 @@ h6 {
 }
 
 p {
-  margin-bottom: 1.5em;
+  margin: 0 0 1.5em;
 }
 
 dfn, cite, em, i {
@@ -934,12 +946,12 @@ a:hover, a:active {
   color: #fff;
 }
 
-.hentry {
+.entry-content {
   max-width: 60rem;
   margin: 0 auto;
 }
 
-.site-main {
+.content-wrapper {
   padding: 5rem 18.47084%;
 }
 
@@ -979,6 +991,55 @@ a:hover, a:active {
 .avatar {
   border-radius: 50%;
   overflow: hidden;
+}
+
+.entry-footer {
+  padding: 0 18.47084% 2.5rem;
+  font-family: "Roboto Condensed", serif;
+}
+.entry-footer span {
+  display: block;
+  max-width: 60rem;
+  margin: 0 auto;
+}
+.entry-footer a {
+  color: #888888;
+  padding: 5px;
+}
+.entry-footer a:hover, .entry-footer a:focus {
+  color: #FF561C;
+}
+
+.author-info-wrapper {
+  padding: 2.5rem 18.47084%;
+  border-top: 1px solid #e3e3e3;
+  border-bottom: 1px solid #e3e3e3;
+}
+
+.author-info {
+  max-width: 60rem;
+  margin: 0 auto;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.author-title {
+  font-size: 16px;
+  font-size: 1.6rem;
+  line-height: 1.2;
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+.author-description {
+  margin-right: 10px;
+  -ms-flex-item-align: center;
+      align-self: center;
+  font-size: 14px;
+  font-size: 1.4rem;
+}
+.author-description p {
+  margin-bottom: 0px;
 }
 
 /*--------------------------------------------------------------
