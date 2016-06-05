@@ -280,22 +280,10 @@ th {
 }
 .sidebar-left {
   width: 25%;
+  padding: 5rem 2.62743%;
   background-color: #262626;
-  color: #888888;
   -ms-flex-order: 1;
       order: 1;
-}
-.sidebar-left ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-.sidebar-left a {
-  color: #888888;
-  text-decoration: none;
-}
-.sidebar-left a:hover, .sidebar-left a:focus {
-  color: #FF561C;
 }
 
 @media screen and (max-width: 1170px) {
@@ -307,29 +295,16 @@ th {
         flex-wrap: wrap;
     -ms-flex-order: 2;
         order: 2;
-  }
-  .sidebar-left .widget {
-    width: 25%;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
   }
 }
 .sidebar-right {
   width: 25%;
+  padding: 5rem 2.62743%;
   background-color: #262626;
-  color: #888888;
   -ms-flex-order: 3;
       order: 3;
-}
-.sidebar-right ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-.sidebar-right a {
-  color: #888888;
-  text-decoration: none;
-}
-.sidebar-right a:hover, .sidebar-right a:focus {
-  color: #FF561C;
 }
 
 @media screen and (max-width: 1440px) {
@@ -339,9 +314,8 @@ th {
     display: flex;
     -ms-flex-wrap: wrap;
         flex-wrap: wrap;
-  }
-  .sidebar-right .widget {
-    width: 25%;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
   }
 }
 /*--------------------------------------------------------------
@@ -517,6 +491,11 @@ img {
 table {
   margin: 0 0 1.5em;
   width: 100%;
+  border: 1px solid #e3e3e3;
+}
+table tr, table td, table th {
+  border: 1px solid #e3e3e3;
+  padding: 10px;
 }
 
 /*--------------------------------------------------------------
@@ -614,6 +593,7 @@ input[type="datetime-local"]:focus,
 input[type="color"]:focus,
 textarea:focus {
   border-color: #FF561C;
+  color: #262626;
 }
 
 select {
@@ -1267,13 +1247,145 @@ a:hover, a:active {
 ## Secondary
 --------------------------------------------------------------*/
 .widget {
-  margin: 0 0 1.5em;
+  font-family: "Roboto Condensed", serif;
+  margin: 0 0 5rem;
+  color: #e3e3e3;
   /* Make sure select elements fit in widgets. */
 }
+.widget a {
+  color: #888888;
+  text-decoration: none;
+}
+.widget a:hover, .widget a:focus {
+  color: #FF561C;
+}
 .widget select {
-  max-width: 100%;
+  width: 100%;
+  padding: 10px;
+  background-color: transparent;
+  border-color: #888888;
+  border-width: 2px;
+  line-height: 1;
+  color: #888888;
+}
+.widget .widget-title {
+  font-size: 24px;
+  font-size: 2.4rem;
+  text-align: center;
+  position: relative;
+  margin-bottom: 2.5rem;
+  padding-bottom: 15px;
+}
+.widget .widget-title:after {
+  content: '';
+  position: absolute;
+  height: 1px;
+  background-color: #888888;
+  width: 5rem;
+  right: 50%;
+  top: 100%;
+  transform: translatex(50%);
+}
+.widget ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.widget ul li.cat-item {
+  color: #888888;
+}
+.widget ul li > a {
+  display: inline-block;
+  margin-bottom: 1.25rem;
+}
+.widget ul ul {
+  margin-right: 2.5rem;
+}
+.widget .recentcomments {
+  margin-bottom: 1.25rem;
+}
+.widget.widget_archive li {
+  color: #888888;
+}
+.widget.widget_calendar caption {
+  margin-bottom: 10px;
+}
+.widget input, .widget select {
+  font-family: "Roboto Condensed", serif;
+}
+.widget .search-field {
+  background-color: transparent;
+  border-color: #888888;
+  border-width: 1px;
+  line-height: 1;
+}
+.widget .search-field:hover {
+  border-color: #fff;
+  color: #fff;
+}
+.widget .search-field:focus {
+  border-color: #FF561C;
+  color: #fff;
+}
+.widget .search-field::-webkit-input-placeholder {
+  color: #888888;
+  opacity: 1;
+}
+.widget .search-field::-moz-placeholder {
+  color: #888888;
+  opacity: 1;
+}
+.widget .search-field:-ms-input-placeholder {
+  color: #888888;
+  opacity: 1;
+}
+.widget .search-field::placeholder {
+  color: #888888;
+  opacity: 1;
+}
+.widget table {
+  border-color: #888888;
+}
+.widget table tr, .widget table td, .widget table th {
+  border: none;
+  text-align: center;
+  padding: 5px;
 }
 
+@media screen and (max-width: 1440px) {
+  .sidebar-right .widget {
+    width: calc(25% - 5rem);
+  }
+  .sidebar-right .widget .widget-title {
+    text-align: right;
+  }
+  .sidebar-right .widget .widget-title:after {
+    right: 0;
+    transform: translatex(0);
+  }
+  .sidebar-right .widget.widget_calendar caption {
+    text-align: right;
+  }
+}
+@media screen and (max-width: 1170px) {
+  .sidebar-right .widget {
+    width: calc(50% - 5rem);
+  }
+
+  .sidebar-left .widget {
+    width: calc(50% - 5rem);
+  }
+  .sidebar-left .widget .widget-title {
+    text-align: right;
+  }
+  .sidebar-left .widget .widget-title:after {
+    right: 0;
+    transform: translatex(0);
+  }
+  .sidebar-left .widget.widget_calendar caption {
+    text-align: right;
+  }
+}
 /*--------------------------------------------------------------
 # Infinite scroll
 --------------------------------------------------------------*/
