@@ -27,9 +27,15 @@
     <header id="masthead" class="site-header" role="banner" style="background-image: url('<?php get_custom_header_image(); ?>')">
         <?php if (!is_front_page() && !is_home()) : ?>
         <p class="side-title">
-            <a href="<?php echo esc_url(home_url('/')); ?>" rel="home"><?php bloginfo('name'); ?></a>
+            <?php nadtheme_the_custom_logo(); ?>
+<!--            <a class="side-title-link" href="--><?php //echo esc_url(home_url('/')); ?><!--" rel="home">--><?php //bloginfo('name'); ?><!--</a>-->
+            <?php if (!has_custom_logo()) : ?>
+                <a class="go-home" href="<?php echo esc_url(home_url('/')); ?>" rel="home"><i class="fa fa-home" aria-hidden="true"></i>
+                </a>
+            <?php endif; ?>
         </p>
         <?php endif; ?>
+        <?php if (has_nav_menu('primary')): ?>
 
         <nav id="site-navigation" class="main-navigation" role="navigation">
 
@@ -40,20 +46,18 @@
 <!--            --><?php //endif ?>
 
             <div class="site-header-menu">
-            <?php if (has_nav_menu('primary')): ?>
-                <button id="menu-toggle" class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e('Primary Menu', 'nadtheme'); ?></button>
+                <button id="menu-toggle" class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e('Menu', 'nadtheme'); ?></button>
                 <?php wp_nav_menu(array('theme_location' => 'primary', 'menu_id' => 'primary-menu')); ?>
-            <?php endif ?>
             </div>
         </nav><!-- #site-navigation -->
+        <?php endif; ?>
 
 
-            <?php if ( !is_single() && !is_page() && !is_archive() ) : ?>
+            <?php if ( !is_single() && !is_page() && !is_archive() && !is_search()) : ?>
                 <div class="site-branding">
                 <?php nadtheme_the_custom_logo(); ?>
                 <h1 class="site-title">
                     <a href="<?php echo esc_url(home_url('/')); ?>" rel="home"><?php bloginfo('name'); ?></a>
-<!--                    --><?php //bloginfo('name'); ?>
                 </h1>
                 <?php $description = get_bloginfo('description', 'display');
                 if ($description || is_customize_preview()) : ?>
