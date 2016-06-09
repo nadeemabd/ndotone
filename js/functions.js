@@ -6,7 +6,7 @@
  */
 
 (function ($) {
-    var body, masthead, menuToggle, siteNavigation, resizeTimer;
+    var body, masthead, menuToggle, siteNavigation, resizeTimer, windowWidth = 1170;
 
     function initMainNavigation(container) {
 
@@ -77,7 +77,7 @@
 
         // Toggle `focus` class to allow submenu access on tablets.
         function toggleFocusClassTouchScreen() {
-            if (window.innerWidth >= 900) {
+            if (window.innerWidth >= windowWidth) {
                 $(document.body).on('touchstart.nadtheme', function (e) {
                     if (!$(e.target).closest('.main-navigation li').length) {
                         $('.main-navigation li').removeClass('focus');
@@ -109,7 +109,7 @@
 
     // Add the default ARIA attributes for the menu toggle and the navigations.
     function onResizeARIA() {
-        if (window.innerWidth < 900) {
+        if (window.innerWidth < windowWidth) {
             if (menuToggle.hasClass('toggled')) {
                 menuToggle.attr('aria-expanded', 'true');
             } else {
