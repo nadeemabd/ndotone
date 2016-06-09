@@ -53,7 +53,7 @@ if (!function_exists('nadtheme_setup')) :
          * @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
          */
         add_theme_support( 'post-thumbnails' );
-        set_post_thumbnail_size( 1920, 9999 );
+        set_post_thumbnail_size( 1920, 9999);
 
         // This theme uses wp_nav_menu() in one location.
         register_nav_menus(array(
@@ -212,6 +212,9 @@ function nadtheme_scripts() {
     // Add custom fonts, used in the main stylesheet.
     wp_enqueue_style( 'nadtheme-fonts', nadtheme_fonts_url(), array(), null );
 
+    // Add Font Awesome, used in the main stylesheet.
+    wp_enqueue_style('fontawesome', get_template_directory_uri() . '/fontawesome/css/font-awesome.min.css', array(), '4.5.0');
+
     wp_enqueue_style('nadtheme-style', get_stylesheet_uri());
 
 //    wp_enqueue_script('nadtheme-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20151215', true);
@@ -269,3 +272,15 @@ require get_template_directory() . '/inc/customizer.php';
  * Load Jetpack compatibility file.
  */
 require get_template_directory() . '/inc/jetpack.php';
+
+
+/**
+ * Filter the excerpt length to 30 characters.
+ *
+ * @param int $length Excerpt length.
+ * @return int (Maybe) modified excerpt length.
+ */
+function wpdocs_custom_excerpt_length( $length ) {
+    return 30;
+}
+add_filter( 'excerpt_length', 'wpdocs_custom_excerpt_length', 999 );
