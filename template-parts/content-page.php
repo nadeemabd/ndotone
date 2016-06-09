@@ -14,17 +14,18 @@
 		<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
 	</header><!-- .entry-header -->
 
-	<div class="entry-content">
-		<?php
-			the_content();
+	<div class="content-wrapper">
+		<div class="entry-content">
+			<?php
+				the_content();
 
-			wp_link_pages( array(
-				'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'nadtheme' ),
-				'after'  => '</div>',
-			) );
-		?>
-	</div><!-- .entry-content -->
-
+				wp_link_pages( array(
+					'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'nadtheme' ),
+					'after'  => '</div>',
+				) );
+			?>
+		</div><!-- .entry-content -->
+	</div>
 	<footer class="entry-footer">
 		<?php
 			edit_post_link(
