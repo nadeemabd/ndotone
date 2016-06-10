@@ -10,8 +10,13 @@
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-
-    <header class="entry-header" style="background-image: url('<?php echo the_post_thumbnail_url()?>')">
+    <?php if( has_post_thumbnail() ) : ?>
+        <div class="post-thumbnail" style="background-image: url('<?php echo the_post_thumbnail_url()?>')">
+<!--            --><?php //the_post_thumbnail(); ?>
+        </div>
+    <?php endif; ?>
+<!--    <header class="entry-header" style="background-image: url('<?php //echo the_post_thumbnail_url()?>')"> -->
+    <header class="entry-header">
         <?php if ( is_sticky() && is_home() && ! is_paged() ) : ?>
             <span class="sticky-post"><?php _e( 'Featured', 'nadtheme' ); ?></span>
         <?php endif; ?>
@@ -23,21 +28,21 @@
             the_title( '<h2 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
         }
 
-        if ( 'post' === get_post_type() ) : ?>
-            <div class="entry-cats">
-                <?php nadtheme_get_the_categories(); ?>
-            </div><!-- .entry-meta -->
-            <?php
-        endif; ?>
+//        if ( 'post' === get_post_type() ) : ?>
+<!--            <div class="entry-cats">-->
+<!--                --><?php //nadtheme_get_the_categories(); ?>
+<!--            </div>--><!-- .entry-meta -->
+<!--            --><?php
+//        endif; ?>
     </header><!-- .entry-header -->
     <div class="content-wrapper">
-        <div class="entry-content">
-            <?php if ( 'post' === get_post_type() ) : ?>
+        <?php if ( 'post' === get_post_type() ) : ?>
             <div class="entry-meta">
                 <?php nadtheme_posted_on(); ?>
             </div><!-- .entry-meta -->
             <?php
-            endif; ?>
+        endif; ?>
+        <div class="entry-content">
             <?php
                 the_content();
 
