@@ -259,6 +259,8 @@ th {
   display: flex;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 .content-area {
@@ -528,6 +530,7 @@ input[type="submit"]:active,
 input[type="submit"]:focus {
   border-color: #FF561C;
   color: #FF561C;
+  outline: none;
 }
 
 input[type="text"],
@@ -590,6 +593,7 @@ input[type="color"]:focus,
 textarea:focus {
   border-color: #FF561C;
   color: #262626;
+  outline: none;
 }
 
 select {
@@ -665,8 +669,6 @@ a:hover, a:active {
 }
 
 .main-navigation {
-  display: -ms-flexbox;
-  display: flex;
   position: relative;
 }
 .main-navigation ul {
@@ -771,8 +773,6 @@ a:hover, a:active {
 }
 
 .site-header-menu {
-  -ms-flex: 1 0 auto;
-      flex: 1 0 auto;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-direction: column;
@@ -910,8 +910,20 @@ a:hover, a:active {
 /*--------------------------------------------------------------
 ## Posts and pages
 --------------------------------------------------------------*/
-.sticky {
-  display: block;
+.sticky-post {
+  position: absolute;
+  top: 0;
+  right: 5rem;
+  font-family: "Roboto Condensed", serif;
+  font-size: 14px;
+  font-size: 1.4rem;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  text-indent: 5px;
+  text-align: center;
+  background-color: #FF561C;
+  color: #fff;
+  padding: 5px 10px;
 }
 
 .page-links {
@@ -929,6 +941,28 @@ a:hover, a:active {
 .hfeed .hentry:not(.has-post-thumbnail) .post-content {
   padding: 5rem;
 }
+.hfeed .hentry:not(.has-post-thumbnail) .entry-meta {
+  text-align: center;
+}
+.hfeed .hentry:not(.has-post-thumbnail) .sticky-post {
+  right: 50%;
+  transform: translateX(50%);
+}
+.hfeed .overflow .post-content {
+  position: relative;
+  overflow: hidden;
+  -ms-flex-pack: start;
+      justify-content: flex-start;
+}
+.hfeed .overflow .post-content:after {
+  content: '';
+  position: absolute;
+  height: 10rem;
+  width: 100%;
+  bottom: 0;
+  right: 0;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, white 50%);
+}
 .hfeed .post-content {
   -ms-flex: 1;
       flex: 1;
@@ -939,10 +973,24 @@ a:hover, a:active {
       flex-direction: column;
   -ms-flex-pack: center;
       justify-content: center;
-  padding: 0 5rem;
+  padding: 5rem;
+  max-height: 30rem;
+  position: relative;
+}
+.hfeed .entry-meta {
+  display: block;
+  margin-bottom: 0;
+  padding-bottom: 0;
+  height: auto;
+  border-bottom: none;
 }
 .hfeed .entry-content p {
   margin-bottom: 0;
+}
+.hfeed .page-header {
+  padding: 5rem 5rem 0;
+  text-align: center;
+  border-bottom: 1px solid #e3e3e3;
 }
 .hfeed .post-thumbnail {
   -ms-flex-preferred-size: 30rem;
@@ -968,6 +1016,9 @@ a:hover, a:active {
 .hfeed .cover-link:hover {
   opacity: .25;
 }
+.hfeed .entry-title {
+  color: #262626;
+}
 .hfeed .entry-title a {
   color: #262626;
 }
@@ -980,46 +1031,14 @@ a:hover, a:active {
     display: block;
   }
 }
-body.single .entry-header, body.page .entry-header {
+body.single .post-thumbnail, body.page .post-thumbnail {
   position: absolute;
   top: 0;
   right: 0;
   height: 60rem;
   width: 100%;
-  display: -ms-flexbox;
-  display: flex;
   background-size: cover;
-  -ms-flex-direction: column;
-      flex-direction: column;
-  -ms-flex-pack: center;
-      justify-content: center;
-  -ms-flex-align: center;
-      align-items: center;
-  text-align: center;
   background-position: center;
-}
-body.archive .page-header, body.search .page-header {
-  position: absolute;
-  top: 0;
-  right: 0;
-  height: 60rem;
-  width: 100%;
-  display: -ms-flexbox;
-  display: flex;
-  background-size: cover;
-  -ms-flex-direction: column;
-      flex-direction: column;
-  -ms-flex-pack: center;
-      justify-content: center;
-  -ms-flex-align: center;
-      align-items: center;
-  text-align: center;
-  background-position: center;
-}
-
-.entry-title,
-.page-title {
-  color: #fff;
 }
 
 body.single .entry-content, body.page .entry-content {
@@ -1027,7 +1046,21 @@ body.single .entry-content, body.page .entry-content {
   margin: 0 auto;
 }
 body.single .content-wrapper, body.page .content-wrapper {
-  padding: 5rem 18.47084%;
+  padding: 0 18.47084% 5rem;
+}
+body.single .entry-header, body.page .entry-header {
+  padding: 5rem 18.47084% 2.5rem;
+}
+body.single .entry-meta, body.page .entry-meta {
+  max-width: 60rem;
+  margin-right: auto;
+  margin-left: auto;
+}
+body.single .entry-title,
+body.single .page-title, body.page .entry-title,
+body.page .page-title {
+  max-width: 60rem;
+  margin: 0 auto;
 }
 body.search .page-content {
   padding: 5rem 18.47084%;
@@ -1058,7 +1091,8 @@ body.search .page-content {
   display: -ms-flexbox;
   display: flex;
   margin-bottom: 5rem;
-  height: 4.6rem;
+  padding-bottom: 2.5rem;
+  border-bottom: 1px solid #e3e3e3;
 }
 .entry-meta span {
   display: block;
