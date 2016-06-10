@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /*!
 Theme Name: nadtheme
 Theme URI: http://underscores.me/
@@ -290,15 +291,29 @@ th {
 
 @media screen and (max-width: 1170px) {
   .sidebar-left {
-    width: 100%;
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
     -ms-flex-order: 2;
         order: 2;
-    -ms-flex-pack: distribute;
-        justify-content: space-around;
+    width: 100%;
+    display: block;
+    padding: 5rem;
+    -webkit-column-count: 2;
+       -moz-column-count: 2;
+            column-count: 2;
+    -webkit-column-gap: 5rem;
+       -moz-column-gap: 5rem;
+            column-gap: 5rem;
+    border-bottom: 1px solid #888888;
+  }
+  .sidebar-left .widget {
+    display: inline-block;
+    width: 100%;
+  }
+}
+@media screen and (max-width: 700px) {
+  .sidebar-left {
+    -webkit-column-count: 1;
+       -moz-column-count: 1;
+            column-count: 1;
   }
 }
 .sidebar-right {
@@ -312,12 +327,32 @@ th {
 @media screen and (max-width: 1440px) {
   .sidebar-right {
     width: 100%;
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
-    -ms-flex-pack: distribute;
-        justify-content: space-around;
+    display: block;
+    padding: 5rem;
+    -webkit-column-count: 3;
+       -moz-column-count: 3;
+            column-count: 3;
+    -webkit-column-gap: 5rem;
+       -moz-column-gap: 5rem;
+            column-gap: 5rem;
+  }
+  .sidebar-right .widget {
+    display: inline-block;
+    width: 100%;
+  }
+}
+@media screen and (max-width: 1170px) {
+  .sidebar-right {
+    -webkit-column-count: 2;
+       -moz-column-count: 2;
+            column-count: 2;
+  }
+}
+@media screen and (max-width: 700px) {
+  .sidebar-right {
+    -webkit-column-count: 1;
+       -moz-column-count: 1;
+            column-count: 1;
   }
 }
 /*--------------------------------------------------------------
@@ -825,6 +860,152 @@ a:hover, a:active {
     border-top: none;
   }
 }
+.social-navigation ul {
+  margin: 0;
+  display: -ms-flexbox;
+  display: flex;
+  list-style: none;
+  -ms-flex-pack: center;
+      justify-content: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+.social-navigation ul li {
+  margin: 0 6px;
+}
+.social-navigation a[href*="500px.com"]:before {
+  content: "";
+}
+.social-navigation a[href*="500px.com"]:hover {
+  color: #0099e5;
+}
+.social-navigation a[href*="behance.com"]:before {
+  content: "";
+}
+.social-navigation a[href*="behance.com"]:hover {
+  color: #1769ff;
+}
+.social-navigation a[href*="codepen.io"]:before {
+  content: "";
+}
+.social-navigation a[href*="codepen.io"]:hover {
+  color: #191919;
+}
+.social-navigation a[href*="deviantart.com"]:before {
+  content: "";
+}
+.social-navigation a[href*="deviantart.com"]:hover {
+  color: #05cc47;
+}
+.social-navigation a[href*="dribbble.com"]:before {
+  content: "";
+}
+.social-navigation a[href*="dribbble.com"]:hover {
+  color: #ea4c89;
+}
+.social-navigation a[href*="facebook.com"]:before {
+  content: "";
+}
+.social-navigation a[href*="facebook.com"]:hover {
+  color: #3b5998;
+}
+.social-navigation a[href*="flickr.com"]:before {
+  content: "";
+}
+.social-navigation a[href*="flickr.com"]:hover {
+  color: #0063dc;
+}
+.social-navigation a[href*="github.com"]:before {
+  content: "";
+}
+.social-navigation a[href*="github.com"]:hover {
+  color: #4183c4;
+}
+.social-navigation a[href*="google.com"]:before {
+  content: "";
+}
+.social-navigation a[href*="google.com"]:hover {
+  color: #dc4e41;
+}
+.social-navigation a[href*="instagram.com"]:before {
+  content: "";
+}
+.social-navigation a[href*="instagram.com"]:hover {
+  color: #3f729b;
+}
+.social-navigation a[href*="linkedin.com"]:before {
+  content: "";
+}
+.social-navigation a[href*="linkedin.com"]:hover {
+  color: #0077b5;
+}
+.social-navigation a[href*="medium.com"]:before {
+  content: "";
+}
+.social-navigation a[href*="medium.com"]:hover {
+  color: #0BE370;
+}
+.social-navigation a[href*="pinterest.com"]:before {
+  content: "";
+}
+.social-navigation a[href*="pinterest.com"]:hover {
+  color: #bd081c;
+}
+.social-navigation a[href*="soundcloud.com"]:before {
+  content: "";
+}
+.social-navigation a[href*="soundcloud.com"]:hover {
+  color: #ff8800;
+}
+.social-navigation a[href*="tumblr.com"]:before {
+  content: "";
+}
+.social-navigation a[href*="tumblr.com"]:hover {
+  color: #35465c;
+}
+.social-navigation a[href*="twitch.com"]:before {
+  content: "";
+}
+.social-navigation a[href*="twitch.com"]:hover {
+  color: #6441a5;
+}
+.social-navigation a[href*="twitter.com"]:before {
+  content: "";
+}
+.social-navigation a[href*="twitter.com"]:hover {
+  color: #55acee;
+}
+.social-navigation a[href*="vimeo.com"]:before {
+  content: "";
+}
+.social-navigation a[href*="vimeo.com"]:hover {
+  color: #17B3E8;
+}
+.social-navigation a[href*="wordpress.com"]:before {
+  content: "";
+}
+.social-navigation a[href*="wordpress.com"]:hover {
+  color: #0087BE;
+}
+.social-navigation a[href*="wordpress.org"]:before {
+  content: "";
+}
+.social-navigation a[href*="wordpress.org"]:hover {
+  color: #0087BE;
+}
+.social-navigation a[href*="youtube.com"]:before {
+  content: "";
+}
+.social-navigation a[href*="youtube.com"]:hover {
+  color: #cd201f;
+}
+.social-navigation a:before {
+  content: '\f0c1';
+  font-family: FontAwesome;
+  font-size: 16px;
+  font-size: 1.6rem;
+}
+
 /*--------------------------------------------------------------
 # Accessibility
 --------------------------------------------------------------*/
@@ -1512,9 +1693,6 @@ body.search .page-content {
 }
 
 @media screen and (max-width: 1440px) {
-  .sidebar-right .widget {
-    width: calc(25% - 5rem);
-  }
   .sidebar-right .widget .widget-title {
     text-align: right;
   }
@@ -1527,13 +1705,6 @@ body.search .page-content {
   }
 }
 @media screen and (max-width: 1170px) {
-  .sidebar-right .widget {
-    width: calc(50% - 5rem);
-  }
-
-  .sidebar-left .widget {
-    width: calc(50% - 5rem);
-  }
   .sidebar-left .widget .widget-title {
     text-align: right;
   }
@@ -1719,4 +1890,107 @@ object {
 .side-title .fa.fa-home:hover, .side-title .fa.fa-home:focus {
   color: #fff;
   background-color: #FF561C;
+}
+
+/*--------------------------------------------------------------
+# Footer
+--------------------------------------------------------------*/
+.site-footer {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  font-family: "Roboto Condensed", serif;
+  color: #888888;
+  background-color: #262626;
+  font-size: 14px;
+  font-size: 1.4rem;
+}
+.site-footer a {
+  color: #888888;
+}
+.site-footer a:hover, .site-footer a:focus {
+  color: #FF561C;
+}
+.site-footer .site-info, .site-footer .social-navigation {
+  width: 25%;
+  background-color: #262626;
+  color: #fff;
+  text-align: center;
+  padding: 2.5rem;
+  -ms-flex-item-align: center;
+      align-self: center;
+}
+.site-footer .site-copyright {
+  width: 50%;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: justify;
+      justify-content: space-between;
+  -ms-flex-align: center;
+      align-items: center;
+  border-top: 1px solid #e3e3e3;
+  padding: 2.5rem;
+  background-color: #fff;
+}
+
+.footer-menu {
+  display: -ms-flexbox;
+  display: flex;
+  list-style: none;
+  margin: 0;
+}
+.footer-menu a {
+  display: block;
+  padding: 0 0.625rem;
+}
+
+@media screen and (max-width: 1440px) {
+  .site-footer {
+    background-color: #262626;
+    border-top: 1px solid #888888;
+    padding: 2.5rem;
+  }
+  .site-footer .site-info,
+  .site-footer .site-copyright,
+  .site-footer .social-navigation {
+    padding: 0;
+  }
+  .site-footer .site-copyright {
+    border-top: none;
+    -ms-flex-direction: column;
+        flex-direction: column;
+    -ms-flex-align: center;
+        align-items: center;
+    background-color: #262626;
+  }
+  .site-footer .site-copyright .copy {
+    -ms-flex-order: 2;
+        order: 2;
+  }
+}
+@media screen and (max-width: 1170px) {
+  .site-footer .site-info,
+  .site-footer .site-copyright,
+  .site-footer .social-navigation {
+    width: 100%;
+    margin-bottom: 2.5rem;
+  }
+  .site-footer .social-navigation {
+    -ms-flex-order: 1;
+        order: 1;
+  }
+  .site-footer .site-copyright {
+    -ms-flex-order: 2;
+        order: 2;
+  }
+  .site-footer .site-info {
+    -ms-flex-order: 3;
+        order: 3;
+  }
+
+  .footer-menu {
+    -ms-flex-order: 1;
+        order: 1;
+  }
 }
