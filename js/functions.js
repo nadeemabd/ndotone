@@ -180,6 +180,28 @@
         });
     }
 
+    /**
+     * Make sure content isn't too high
+     */
+
+    function adjustPosts() {
+        $('.hfeed .post-content').each( function() {
+            var $contain = $(this),
+                $innerContainHeight = 300,
+            $header = $('.entry-header', this),
+                $headerHeight = $header.innerHeight(),
+                $content = $('.entry-content', this),
+                $contentHeight = $content.innerHeight(),
+                $wholeContentHeight = $headerHeight + $contentHeight;
+
+            if ( $innerContainHeight < $wholeContentHeight ) {
+                $contain.parent().addClass('overflow');
+            } else {
+                $contain.parent().removeClass('overflow');
+            }
+        } );
+    }
+
     $(document).ready(function () {
         body = $(document.body);
 
@@ -196,5 +218,8 @@
 
         belowEntryMetaClass('img.size-full');
         belowEntryMetaClass('blockquote.alignleft, blockquote.alignright');
+
+        adjustPosts();
     });
+
 })(jQuery);
