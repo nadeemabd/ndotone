@@ -30,19 +30,20 @@
 				<span class="sticky-post"><?php _e( 'Featured', 'nadtheme' ); ?></span>
 			<?php endif; ?>
 
+			<?php if ( 'post' === get_post_type() ) : ?>
+			<div class="entry-meta">
+				<?php nadtheme_posted_date(); ?>
+			</div><!-- .entry-meta-->
+			<?php
+			endif; ?>
+
 			<?php
 				if ( is_single() ) {
 					the_title( '<h1 class="entry-title">', '</h1>' );
 				} else {
 					the_title( '<h2 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
 				}
-
-	//		if ( 'post' === get_post_type() ) : ?>
-	<!--		<div class="entry-meta">-->
-	<!--			--><?php //nadtheme_posted_on(); ?>
-	<!--		</div>--><!-- .entry-meta -->
-	<!--		--><?php
-	//		endif; ?>
+			?>
 		</header><!-- .entry-header -->
 
 		<div class="entry-content">
