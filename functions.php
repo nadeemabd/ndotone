@@ -286,3 +286,25 @@ function wpdocs_custom_excerpt_length( $length ) {
     return 30;
 }
 add_filter( 'excerpt_length', 'wpdocs_custom_excerpt_length', 999 );
+
+function nadtheme_custom_infinite_more() {
+    if ( is_home() || is_archive() ) {
+        ?>
+        <script type="text/javascript">
+            //<![CDATA[
+            infiniteScroll.settings.text = "Load More";
+            //]]>
+        </script>
+    <?php }
+}
+add_action( 'wp_footer', 'nadtheme_custom_infinite_more', 3 );
+
+function elegance_widget_tag_cloud_args($args)
+{
+    $args['largest'] = 1.6;
+    $args['smallest'] = 1.6;
+    $args['unit'] = 'rem';
+    return $args;
+}
+
+add_filter('widget_tag_cloud_args', 'elegance_widget_tag_cloud_args');
