@@ -53,7 +53,7 @@
         <?php endif; ?>
 
 
-            <?php if ( !is_single() && !is_page() && !is_archive() && !is_search()) : ?>
+            <?php if ( !is_single() && !is_page()) : ?>
                 <div class="site-branding">
                 <?php nadtheme_the_custom_logo(); ?>
                 <h1 class="site-title">
