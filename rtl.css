@@ -269,6 +269,7 @@ th {
       order: 2;
   background-color: #fff;
   width: 50%;
+  margin-bottom: 20rem;
 }
 
 @media screen and (max-width: 1440px) {
@@ -410,23 +411,54 @@ h6 {
 }
 
 p {
-  margin: 0 0 1.5em;
+  margin: 0 0 2.5rem;
 }
 
 dfn, cite, em, i {
   font-style: italic;
 }
 
+blockquote, q {
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
 blockquote {
-  margin: 0 1.5em;
+  margin: 0 2.5rem;
+  position: relative;
+  font-size: 18px;
+  font-size: 1.8rem;
+  line-height: 1.5;
+}
+blockquote:before {
+  content: open-quote;
+  position: absolute;
+  top: -10px;
+  right: -20px;
+  color: #e3e3e3;
+  font-size: 72px;
+  font-size: 7.2rem;
+  line-height: 1;
+}
+blockquote:after {
+  content: no-close-quote;
+}
+blockquote p {
+  position: relative;
+  z-index: 10;
+}
+blockquote cite {
+  display: block;
+  font-size: 14px;
+  font-size: 1.4rem;
+  line-height: 1.75;
 }
 
 address {
-  margin: 0 0 1.5em;
+  margin: 0 0 2.5rem;
 }
 
 pre {
-  background: #eee;
+  background: #e3e3e3;
   font-family: "Courier 10 Pitch", Courier, monospace;
   font-size: 15px;
   font-size: 1.5rem;
@@ -443,219 +475,24 @@ code, kbd, tt, var {
   font-size: 1.5rem;
 }
 
+code {
+  background-color: #e3e3e3;
+  padding: 5px 10px;
+}
+
 abbr, acronym {
   border-bottom: 1px dotted #666;
   cursor: help;
 }
 
 mark, ins {
-  background: #fff9c0;
+  background: #FF561C;
   text-decoration: none;
+  padding: 5px;
 }
 
 big {
   font-size: 125%;
-}
-
-/*--------------------------------------------------------------
-# Elements
---------------------------------------------------------------*/
-html {
-  font-size: 62.5%;
-  box-sizing: border-box;
-}
-
-*,
-*:before,
-*:after {
-  /* Inherit box-sizing to make it easier to change the property for components that leverage other behavior; see http://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/ */
-  box-sizing: inherit;
-}
-
-body {
-  background: #fff;
-  /* Fallback for when there is no custom background color defined. */
-  direction: rtl;
-}
-
-blockquote, q {
-  quotes: "" "";
-}
-blockquote:before, blockquote:after, q:before, q:after {
-  content: "";
-}
-
-hr {
-  background-color: #ccc;
-  border: 0;
-  height: 1px;
-  margin-bottom: 1.5em;
-}
-
-ul, ol {
-  margin: 0 2.5rem 2.5rem 0;
-  padding: 0;
-}
-
-ul {
-  list-style: disc;
-}
-
-ol {
-  list-style: decimal;
-}
-
-li > ul,
-li > ol {
-  margin-bottom: 0;
-  margin-right: 2.5rem;
-}
-
-dt {
-  font-weight: bold;
-}
-
-dd {
-  margin: 0 1.5em 1.5em;
-}
-
-img {
-  height: auto;
-  /* Make sure images are scaled correctly. */
-  max-width: 100%;
-  /* Adhere to container width. */
-}
-
-table {
-  margin: 0 0 1.5em;
-  width: 100%;
-  border: 1px solid #e3e3e3;
-}
-table tr, table td, table th {
-  border: 1px solid #e3e3e3;
-  padding: 10px;
-}
-
-/*--------------------------------------------------------------
-# Forms
---------------------------------------------------------------*/
-button,
-input[type="button"],
-input[type="reset"],
-input[type="submit"] {
-  border: 1px solid;
-  border-color: #888888;
-  background: transparent;
-  color: rgba(0, 0, 0, 0.8);
-  padding: .6em 1em .4em;
-  transition: all ease .5s;
-}
-button:hover,
-input[type="button"]:hover,
-input[type="reset"]:hover,
-input[type="submit"]:hover {
-  border-color: #262626;
-  color: #262626;
-}
-button:active, button:focus,
-input[type="button"]:active,
-input[type="button"]:focus,
-input[type="reset"]:active,
-input[type="reset"]:focus,
-input[type="submit"]:active,
-input[type="submit"]:focus {
-  border-color: #FF561C;
-  color: #FF561C;
-  outline: none;
-}
-
-input[type="text"],
-input[type="email"],
-input[type="url"],
-input[type="password"],
-input[type="search"],
-input[type="number"],
-input[type="tel"],
-input[type="range"],
-input[type="date"],
-input[type="month"],
-input[type="week"],
-input[type="time"],
-input[type="datetime"],
-input[type="datetime-local"],
-input[type="color"],
-textarea {
-  color: #888888;
-  border: 1px solid #e3e3e3;
-  display: block;
-  width: 100%;
-  padding: 15px;
-  transition: all ease .5s;
-}
-input[type="text"]:hover,
-input[type="email"]:hover,
-input[type="url"]:hover,
-input[type="password"]:hover,
-input[type="search"]:hover,
-input[type="number"]:hover,
-input[type="tel"]:hover,
-input[type="range"]:hover,
-input[type="date"]:hover,
-input[type="month"]:hover,
-input[type="week"]:hover,
-input[type="time"]:hover,
-input[type="datetime"]:hover,
-input[type="datetime-local"]:hover,
-input[type="color"]:hover,
-textarea:hover {
-  border-color: #262626;
-  color: #262626;
-}
-input[type="text"]:focus,
-input[type="email"]:focus,
-input[type="url"]:focus,
-input[type="password"]:focus,
-input[type="search"]:focus,
-input[type="number"]:focus,
-input[type="tel"]:focus,
-input[type="range"]:focus,
-input[type="date"]:focus,
-input[type="month"]:focus,
-input[type="week"]:focus,
-input[type="time"]:focus,
-input[type="datetime"]:focus,
-input[type="datetime-local"]:focus,
-input[type="color"]:focus,
-textarea:focus {
-  border-color: #FF561C;
-  color: #262626;
-  outline: none;
-}
-
-select {
-  border: 1px solid #e3e3e3;
-}
-
-input[type="text"],
-input[type="email"],
-input[type="url"],
-input[type="password"],
-input[type="search"],
-input[type="number"],
-input[type="tel"],
-input[type="range"],
-input[type="date"],
-input[type="month"],
-input[type="week"],
-input[type="time"],
-input[type="datetime"],
-input[type="datetime-local"],
-input[type="color"] {
-  min-height: 5rem;
-}
-
-textarea {
-  resize: vertical;
 }
 
 /*--------------------------------------------------------------
@@ -670,7 +507,7 @@ a {
   transition: all ease .5s;
 }
 a:visited {
-  color: transparent;
+  color: #FF561C;
 }
 a:hover, a:focus, a:active {
   color: #888888;
@@ -726,8 +563,11 @@ a:hover, a:active {
 .main-navigation a {
   -ms-flex: 1 0 auto;
       flex: 1 0 auto;
-  display: block;
+  display: -ms-flexbox;
+  display: flex;
   text-decoration: none;
+  -ms-flex-pack: justify;
+      justify-content: space-between;
 }
 .main-navigation .sub-menu.toggled {
   -ms-flex: 1 0 100%;
@@ -1007,6 +847,264 @@ a:hover, a:active {
 }
 
 /*--------------------------------------------------------------
+# Elements
+--------------------------------------------------------------*/
+html {
+  font-size: 62.5%;
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  /* Inherit box-sizing to make it easier to change the property for components that leverage other behavior; see http://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/ */
+  box-sizing: inherit;
+}
+
+body {
+  background: #fff;
+  /* Fallback for when there is no custom background color defined. */
+  direction: rtl;
+}
+
+hr {
+  background-color: #ccc;
+  border: 0;
+  height: 1px;
+  margin-bottom: 1.5em;
+}
+
+ul, ol {
+  margin: 0 2.5rem 2.5rem 0;
+  padding: 0;
+}
+
+ul {
+  list-style: disc;
+}
+
+ol {
+  list-style: decimal;
+}
+
+li > ul,
+li > ol {
+  margin-bottom: 0;
+  margin-right: 2.5rem;
+}
+
+dt {
+  font-weight: bold;
+}
+
+dd {
+  margin: 0 1.5em 1.5em;
+}
+
+img {
+  height: auto;
+  /* Make sure images are scaled correctly. */
+  max-width: 100%;
+  /* Adhere to container width. */
+}
+
+table {
+  margin: 0 0 1.5em;
+  width: 100%;
+  border: 1px solid #e3e3e3;
+}
+table tr, table td, table th {
+  border: 1px solid #e3e3e3;
+  padding: 10px;
+}
+
+.pagination .nav-links {
+  -ms-flex-pack: center;
+      justify-content: center;
+  padding: 2.5rem;
+  font-family: "Roboto Condensed", serif;
+  font-size: 18px;
+  font-size: 1.8rem;
+  color: #888888;
+}
+.pagination a {
+  color: #888888;
+}
+.pagination a:hover, .pagination a:focus {
+  color: #FF561C;
+}
+.pagination .prev, .pagination .next {
+  text-transform: uppercase;
+  margin: 0 2.5rem;
+}
+.pagination .prev:hover, .pagination .prev:focus, .pagination .next:hover, .pagination .next:focus {
+  color: #FF561C;
+}
+.pagination .page-numbers {
+  margin: 0 1.25rem;
+}
+.pagination .page-numbers.current {
+  color: #262626;
+  border: 1px solid #262626;
+  padding: 0 15px;
+}
+
+/*--------------------------------------------------------------
+# Forms
+--------------------------------------------------------------*/
+button,
+input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+  border: 1px solid;
+  border-color: #888888;
+  background: transparent;
+  color: rgba(0, 0, 0, 0.8);
+  padding: .6em 1em .4em;
+  transition: all ease .5s;
+}
+button:hover,
+input[type="button"]:hover,
+input[type="reset"]:hover,
+input[type="submit"]:hover {
+  border-color: #262626;
+  color: #262626;
+}
+button:active, button:focus,
+input[type="button"]:active,
+input[type="button"]:focus,
+input[type="reset"]:active,
+input[type="reset"]:focus,
+input[type="submit"]:active,
+input[type="submit"]:focus {
+  border-color: #FF561C;
+  color: #FF561C;
+  outline: none;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="url"],
+input[type="password"],
+input[type="search"],
+input[type="number"],
+input[type="tel"],
+input[type="range"],
+input[type="date"],
+input[type="month"],
+input[type="week"],
+input[type="time"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="color"],
+textarea {
+  color: #888888;
+  border: 1px solid #e3e3e3;
+  display: block;
+  width: 100%;
+  padding: 15px;
+  transition: all ease .5s;
+}
+input[type="text"]:hover,
+input[type="email"]:hover,
+input[type="url"]:hover,
+input[type="password"]:hover,
+input[type="search"]:hover,
+input[type="number"]:hover,
+input[type="tel"]:hover,
+input[type="range"]:hover,
+input[type="date"]:hover,
+input[type="month"]:hover,
+input[type="week"]:hover,
+input[type="time"]:hover,
+input[type="datetime"]:hover,
+input[type="datetime-local"]:hover,
+input[type="color"]:hover,
+textarea:hover {
+  border-color: #262626;
+  color: #262626;
+}
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="url"]:focus,
+input[type="password"]:focus,
+input[type="search"]:focus,
+input[type="number"]:focus,
+input[type="tel"]:focus,
+input[type="range"]:focus,
+input[type="date"]:focus,
+input[type="month"]:focus,
+input[type="week"]:focus,
+input[type="time"]:focus,
+input[type="datetime"]:focus,
+input[type="datetime-local"]:focus,
+input[type="color"]:focus,
+textarea:focus {
+  border-color: #FF561C;
+  color: #262626;
+  outline: none;
+}
+
+select {
+  border: 1px solid #e3e3e3;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="url"],
+input[type="password"],
+input[type="search"],
+input[type="number"],
+input[type="tel"],
+input[type="range"],
+input[type="date"],
+input[type="month"],
+input[type="week"],
+input[type="time"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="color"] {
+  min-height: 5rem;
+}
+
+textarea {
+  resize: vertical;
+}
+
+.post-password-form label {
+  color: #888888;
+  display: block;
+  font-family: "Roboto Condensed", serif;
+  margin-bottom: 2.5rem;
+  text-transform: uppercase;
+}
+
+.search-form {
+  position: relative;
+  transition: all ease .5s;
+}
+.search-form:hover {
+  border-color: #fff;
+}
+.search-form:focus {
+  border-color: #FF561C;
+}
+.search-form .search-submit {
+  position: absolute;
+  top: 50%;
+  left: 15px;
+  min-height: 5rem;
+  border: none;
+  padding: 0;
+  margin-top: -2.5rem;
+  color: #888888;
+}
+.search-form .search-submit:hover, .search-form .search-submit:focus {
+  border-color: #888888;
+  color: #FF561C;
+}
+
+/*--------------------------------------------------------------
 # Accessibility
 --------------------------------------------------------------*/
 /* Text meant only for screen readers. */
@@ -1071,14 +1169,17 @@ a:hover, a:active {
 # Clearings
 --------------------------------------------------------------*/
 .clear:before,
-.clear:after
+.clear:after,
+.entry-content:before,
+.entry-content:after
  {
   content: "";
   display: table;
   table-layout: fixed;
 }
 
-.clear:after
+.clear:after,
+.entry-content:after
  {
   clear: both;
 }
@@ -1099,6 +1200,7 @@ a:hover, a:active {
   font-family: "Roboto Condensed", serif;
   font-size: 14px;
   font-size: 1.4rem;
+  line-height: 1.25;
   text-transform: uppercase;
   letter-spacing: 5px;
   text-indent: 5px;
@@ -1111,10 +1213,13 @@ a:hover, a:active {
 .page-links {
   clear: both;
   margin: 0 0 2.5rem;
+  font-family: "Roboto Condensed", serif;
+  color: #888888;
 }
 .page-links a {
-  border-bottom: dotted;
+  border-bottom: 1px dotted;
   padding: 0 3px;
+  margin: 0 3px;
 }
 
 .hfeed .hentry {
@@ -1219,6 +1324,7 @@ a:hover, a:active {
 }
 .sharedaddy {
   margin-bottom: 2.5rem;
+  padding-top: 2.5rem;
 }
 
 body.single .post-thumbnail, body.page .post-thumbnail {
@@ -1272,8 +1378,6 @@ body.search .page-content {
 .single .byline,
 .group-blog .byline {
   display: inline;
-  -ms-flex-item-align: center;
-      align-self: center;
   margin-right: 10px;
 }
 
@@ -1288,6 +1392,10 @@ body.search .page-content {
   display: block;
   font-size: 14px;
   font-size: 1.4rem;
+}
+.entry-meta .avatar {
+  min-height: 46px;
+  min-width: 46px;
 }
 
 .avatar {
@@ -1307,7 +1415,7 @@ body.search .page-content {
 .entry-footer a {
   color: #888888;
   padding: 0 5px;
-  margin: 5px;
+  margin: 5px 0 5px 5px;
 }
 .entry-footer a:hover, .entry-footer a:focus {
   color: #FF561C;
@@ -1335,8 +1443,7 @@ body.search .page-content {
 }
 .entry-footer .tags-links a:hover {
   border-color: #FF561C;
-  background-color: #FF561C;
-  color: #e3e3e3;
+  color: #FF561C;
 }
 
 .author-info-wrapper {
@@ -1349,6 +1456,10 @@ body.search .page-content {
   margin: 0 auto;
   display: -ms-flexbox;
   display: flex;
+}
+.author-info .avatar {
+  min-height: 92px;
+  min-width: 92px;
 }
 
 .author-title {
@@ -1365,6 +1476,7 @@ body.search .page-content {
       align-self: center;
   font-size: 14px;
   font-size: 1.4rem;
+  line-height: 1.5;
 }
 .author-description p {
   margin-bottom: 0;
@@ -1382,7 +1494,7 @@ body.search .page-content {
 .navigation .post-title {
   color: #262626;
 }
-.navigation .meta-nav {
+.navigation.post-navigation .meta-nav {
   width: 36.94167%;
   display: -ms-flexbox;
   display: flex;
@@ -1395,6 +1507,7 @@ body.search .page-content {
   font-family: "Roboto Condensed", serif;
   text-transform: uppercase;
   color: #888888;
+  transition: all ease .5s;
 }
 .navigation .nav-previous, .navigation .nav-next {
   display: -ms-flexbox;
@@ -1448,7 +1561,7 @@ body.search .page-content {
   .navigation .meta-nav, .navigation .post-title {
     padding: 0;
   }
-  .navigation .meta-nav {
+  .navigation.post-navigation .meta-nav {
     -ms-flex-pack: center;
         justify-content: center;
     width: 100%;
@@ -1467,9 +1580,6 @@ body.search .page-content {
 --------------------------------------------------------------*/
 .comment-content a {
   word-wrap: break-word;
-}
-.comment-content p:last-child {
-  margin-bottom: 0;
 }
 
 .bypostauthor {
@@ -1570,7 +1680,7 @@ body.search .page-content {
 }
 
 .comment-respond {
-  padding: 10rem 18.47084%;
+  padding: 10rem 18.47084% 0;
 }
 
 .comment-reply-title {
@@ -1691,6 +1801,21 @@ body.search .page-content {
   text-align: center;
   padding: 5px;
 }
+.widget .tagcloud {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+.widget .tagcloud a {
+  border: 1px solid #888888;
+  padding: 0 5px;
+  margin: 5px 0 5px 5px;
+}
+.widget .tagcloud a:hover {
+  border-color: #FF561C;
+  color: #FF561C;
+}
 
 @media screen and (max-width: 1440px) {
   .sidebar-right .widget .widget-title {
@@ -1720,7 +1845,7 @@ body.search .page-content {
 # Infinite scroll
 --------------------------------------------------------------*/
 /* Globally hidden elements when Infinite Scroll is supported and in use. */
-.infinite-scroll .posts-navigation,
+.infinite-scroll .pagination,
 .infinite-scroll.neverending .site-footer {
   /* Theme Footer (when set to scrolling) */
   display: none;
@@ -1728,7 +1853,48 @@ body.search .page-content {
 
 /* When Infinite Scroll has reached its end we need to re-display elements that were hidden (via .neverending) before. */
 .infinity-end.neverending .site-footer {
-  display: block;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.site-main .infinite-loader {
+  padding: 5rem;
+  height: 40px;
+  width: 40px;
+  margin: 0 auto;
+}
+.site-main #infinite-handle {
+  text-align: center;
+  padding: 5rem;
+}
+.site-main #infinite-handle span {
+  color: #262626;
+  background-color: transparent;
+  padding: 0;
+}
+.site-main #infinite-handle span button {
+  font-family: "Roboto Condensed", serif;
+  position: relative;
+  padding-bottom: 15px;
+  font-size: 24px;
+  font-size: 2.4rem;
+}
+.site-main #infinite-handle span button:after {
+  position: absolute;
+  content: '';
+  height: 1px;
+  width: 5rem;
+  background-color: #262626;
+  right: 50%;
+  bottom: 0;
+  transform: translateX(50%);
+  transition: all ease .5s;
+}
+.site-main #infinite-handle span button:hover {
+  color: #FF561C;
+}
+.site-main #infinite-handle span button:hover:after {
+  background-color: #FF561C;
 }
 
 /*--------------------------------------------------------------
@@ -1754,7 +1920,7 @@ object {
 ## Captions
 --------------------------------------------------------------*/
 .wp-caption {
-  margin-bottom: 1.5em;
+  margin-bottom: 1.25rem;
   max-width: 100%;
 }
 .wp-caption img[class*="wp-image-"] {
@@ -1768,6 +1934,9 @@ object {
 
 .wp-caption-text {
   text-align: center;
+  font-family: "Roboto Condensed", serif;
+  line-height: 1;
+  color: #888888;
 }
 
 /*--------------------------------------------------------------
@@ -1850,6 +2019,9 @@ object {
 .site-title a {
   color: #fff;
   text-decoration: none;
+}
+.site-title a:hover, .site-title a:focus {
+  color: #FF561C;
 }
 
 .custom-logo {
