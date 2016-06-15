@@ -35,7 +35,13 @@ get_header(); ?>
 
 			endwhile;
 
-			the_posts_navigation();
+			// Previous/next page navigation.
+			the_posts_pagination( array(
+					'mid_size'  		 => 2,
+					'prev_text'          => __( 'Previous', 'nadtheme' ),
+					'next_text'          => __( 'Next', 'nadtheme' ),
+					'before_page_number' => '<span class="meta-nav screen-reader-text">' . __( 'Page', 'nadtheme' ) . ' </span>',
+			) );
 
 		else :
 
