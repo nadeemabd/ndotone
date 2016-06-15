@@ -24,6 +24,15 @@ function nadtheme_body_classes( $classes ) {
 		$classes[] = 'hfeed';
 	}
 
+	// Adds a class of no-sidebar to sites without active sidebar.
+	if ( ! is_active_sidebar( 'sidebar-1' ) && is_active_sidebar( 'sidebar-2' )) {
+		$classes[] = 'no-left-sidebar';
+	} elseif ( is_active_sidebar( 'sidebar-1' ) && ! is_active_sidebar( 'sidebar-2' )) {
+		$classes[] = 'no-right-sidebar';
+	} elseif ( ! is_active_sidebar( 'sidebar-1' ) && ! is_active_sidebar( 'sidebar-2' )) {
+		$classes[] = 'no-sidebar';
+	}
+
 	return $classes;
 }
 add_filter( 'body_class', 'nadtheme_body_classes' );
