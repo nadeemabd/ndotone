@@ -184,23 +184,23 @@
      * Make sure content isn't too high
      */
 
-    function adjustPosts() {
+    (function adjustPosts() {
         $('.hfeed .post-content').each( function() {
             var $contain = $(this),
                 $innerContainHeight = 300,
-            $header = $('.entry-header', this),
+                $header = $('.entry-header', this),
                 $headerHeight = $header.innerHeight(),
                 $content = $('.entry-content', this),
                 $contentHeight = $content.innerHeight(),
                 $wholeContentHeight = $headerHeight + $contentHeight;
 
-            if ( $innerContainHeight < $wholeContentHeight ) {
+            if ( $innerContainHeight < $wholeContentHeight && (window.innerWidth >= 900)) {
                 $contain.parent().addClass('overflow');
             } else {
                 $contain.parent().removeClass('overflow');
             }
         } );
-    }
+    })();
 
     $(document).ready(function () {
         body = $(document.body);
@@ -214,12 +214,18 @@
                     belowEntryMetaClass('blockquote.alignleft, blockquote.alignright');
                 }, 300);
                 onResizeARIA();
+
+                //adjustPosts();
             });
 
         belowEntryMetaClass('img.size-full');
         belowEntryMetaClass('blockquote.alignleft, blockquote.alignright');
 
-        adjustPosts();
+        //$(".dropdown-toggle").click(function(){
+        //    $(this).next(".sub-menu").slideToggle('slow');
+        //});
     });
+
+    //adjustPosts();
 
 })(jQuery);
