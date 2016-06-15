@@ -23,7 +23,7 @@
 <body <?php body_class(); ?>>
 <div id="page" class="site">
     <a class="skip-link screen-reader-text" href="#main"><?php esc_html_e('Skip to content', 'nadtheme'); ?></a>
-
+    <?php if (!is_404()) : ?>
     <header id="masthead" class="site-header" role="banner" style="background-image: url('<?php get_custom_header_image(); ?>')">
         <?php if (!is_front_page() && !is_home()) : ?>
         <p class="side-title">
@@ -82,5 +82,5 @@
 
 
     </header><!-- #masthead -->
-
+    <?php endif; ?>
 <div id="content" class="site-content">
