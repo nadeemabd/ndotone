@@ -81,9 +81,10 @@ if ( post_password_required() ) {
 
 		<p class="no-comments"><?php esc_html_e( 'Comments are closed.', 'nadtheme' ); ?></p>
 	<?php
-	endif;
+	endif; ?>
 
-	comment_form();
-	?>
+	<div class="comment-form-wrapper">
+	<?php comment_form(); ?>
+	</div>
 
 </div><!-- #comments -->
