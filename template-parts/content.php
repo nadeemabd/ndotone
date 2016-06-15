@@ -54,5 +54,5 @@
 	</div>
 <!--	<footer class="entry-footer">-->
 <!--		--><?php //nadtheme_entry_footer(); ?>
-<!--	</footer><!-- .entry-footer -->
+<!--	</footer>--><!-- .entry-footer -->
 </article><!-- #post-## -->
