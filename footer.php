@@ -17,8 +17,8 @@
 
     <div class="site-info">
         <a href="<?php echo esc_url(__('https://wordpress.org/', 'nadtheme')); ?>"><?php printf(esc_html__('%s', 'nadtheme'), 'WordPress'); ?></a>
-        <span class="sep"> | </span>
-        <?php printf(esc_html__('%1$s by %2$s', 'nadtheme'), 'nadtheme', '<a href="http://nadeemabd.github.io/" rel="designer">Nadeem Abdulla</a>'); ?>
+        <span class="sep">&nbsp;|&nbsp;</span>
+        <a href="http://nadeemabd.github.io/" rel="designer"><?php printf(esc_html__('%1$s by %2$s', 'nadtheme'), 'nadtheme', 'Nadeem Abdulla'); ?></a>
     </div><!-- .site-info -->
 
     <div class="site-copyright">
@@ -42,7 +42,7 @@
                 'theme_location' => 'social',
                 'menu_id' => 'social-menu',
                 'menu_class' => 'social-menu',
-                'depth' => 1,
+                'container' => 'ul',
                 'link_before' => '<span class="screen-reader-text">',
                 'link_after' => '</span>',
             )); ?>
