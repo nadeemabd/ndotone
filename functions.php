@@ -288,14 +288,16 @@ function wpdocs_custom_excerpt_length( $length ) {
 add_filter( 'excerpt_length', 'wpdocs_custom_excerpt_length', 999 );
 
 function nadtheme_custom_infinite_more() {
-    if ( is_home() || is_archive() ) {
-        ?>
-        <script type="text/javascript">
-            //<![CDATA[
-            infiniteScroll.settings.text = "Load More";
-            //]]>
-        </script>
-    <?php }
+    if ( class_exists( 'Jetpack' ) && Jetpack::is_module_active( 'infinite-scroll' ) ) :
+        if ( is_home() || is_archive() ) {
+            ?>
+            <script type="text/javascript">
+                //<![CDATA[
+                infiniteScroll.settings.text = "Load More";
+                //]]>
+            </script>
+        <?php }
+    endif ;
 }
 add_action( 'wp_footer', 'nadtheme_custom_infinite_more', 3 );
 
