@@ -5,9 +5,9 @@
  * navigation support for dropdown menus.
  */
 ( function() {
-	var container, button, menu, links, subMenus, i, len;
+	var container, button, widgets, links, subMenus, i, len;
 
-	container = document.getElementById( 'site-navigation' );
+	container = document.getElementById( 'secondary-right' );
 	if ( ! container ) {
 		return;
 	}
@@ -17,7 +17,7 @@
 		return;
 	}
 
-	menu = container.getElementsByTagName( 'ul' )[0];
+	widgets = container.getElementsByTagName( 'ul' )[0];
 
 	// Hide menu toggle button if menu is empty and return early.
 	if ( 'undefined' === typeof menu ) {
