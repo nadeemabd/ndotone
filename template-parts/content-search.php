@@ -4,7 +4,7 @@
  *
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
- * @package nadtheme
+ * @package ndotone
  */
 
 ?>
@@ -21,7 +21,7 @@
 
 	<!--		--><?php //if ( 'post' === get_post_type() ) : ?>
 	<!--		<div class="entry-meta">-->
-	<!--			--><?php //nadtheme_posted_on(); ?>
+	<!--			--><?php //ndotone_posted_on(); ?>
 	<!--		</div>--><!-- .entry-meta -->
 	<!--		--><?php //endif; ?>
 		</header><!-- .entry-header -->
@@ -32,6 +32,6 @@
 	</div>
 
 <!--	<footer class="entry-footer">-->
-<!--		--><?php //nadtheme_entry_footer(); ?>
+<!--		--><?php //ndotone_entry_footer(); ?>
 <!--	</footer>--><!-- .entry-footer -->
 </article><!-- #post-## -->

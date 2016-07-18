@@ -6,7 +6,7 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
  *
- * @package nadtheme
+ * @package ndotone
  */
 
 ?><!DOCTYPE html>
@@ -21,66 +21,54 @@
 </head>
 
 <body <?php body_class(); ?>>
+
 <div id="page" class="site">
-    <a class="skip-link screen-reader-text" href="#main"><?php esc_html_e('Skip to content', 'nadtheme'); ?></a>
+    <a class="skip-link screen-reader-text" href="#main"><?php esc_html_e('Skip to content', 'ndotone'); ?></a>
+
     <?php if (!is_404()) : ?>
     <header id="masthead" class="site-header" role="banner" style="background-image: url('<?php get_custom_header_image(); ?>')">
-        <?php if (!is_front_page() && !is_home()) : ?>
-        <p class="side-title">
-            <?php nadtheme_the_custom_logo(); ?>
-<!--            <a class="side-title-link" href="--><?php //echo esc_url(home_url('/')); ?><!--" rel="home">--><?php //bloginfo('name'); ?><!--</a>-->
-            <?php if (!has_custom_logo()) : ?>
-                <a class="go-home" href="<?php echo esc_url(home_url('/')); ?>" rel="home"><i class="fa fa-home" aria-hidden="true"></i>
-                </a>
-            <?php endif; ?>
-        </p>
-        <?php endif; ?>
+
+        <?php if (is_single() || is_page()) : ?>
+            <p class="side-title">
+                <?php
+                    // Theme custom logo function
+                    ndotone_the_custom_logo();
+                ?>
+
+                <?php if (!has_custom_logo()) : ?>
+                    <a class="go-home" href="<?php echo esc_url(home_url('/')); ?>" rel="home"><i class="fa fa-home" aria-hidden="true"></i></a>
+                <?php endif; ?>
+            </p><!-- .side-title -->
+        <?php endif; // Front page and home check ?>
+
         <?php if (has_nav_menu('primary')): ?>
+            <nav id="site-navigation" class="main-navigation" role="navigation">
+                <div class="site-header-menu">
+                    <button id="menu-toggle" class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e('Menu', 'ndotone'); ?></button>
+                    <?php wp_nav_menu(array('theme_location' => 'primary', 'menu_id' => 'primary-menu')); ?>
+                </div><!-- .site-header-menu -->
+            </nav><!-- #site-navigation -->
+        <?php endif; // Primary menu check ?>
 
-        <nav id="site-navigation" class="main-navigation" role="navigation">
+        <?php if ( !is_single() && !is_page()) : ?>
+            <div class="site-branding">
+                <?php
+                    // Custom logo for single page
+                    ndotone_the_custom_logo();
+                ?>
 
-<!--            --><?php //if (!is_front_page() && !is_home()) : ?>
-<!--                <p class="site-title">-->
-<!--                    <a class="nav-site-title" href="--><?php //echo esc_url(home_url('/')); ?><!--" rel="home">--><?php //bloginfo('name'); ?><!--</a>-->
-<!--                </p>-->
-<!--            --><?php //endif ?>
-
-            <div class="site-header-menu">
-                <button id="menu-toggle" class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e('Menu', 'nadtheme'); ?></button>
-                <?php wp_nav_menu(array('theme_location' => 'primary', 'menu_id' => 'primary-menu')); ?>
-            </div>
-        </nav><!-- #site-navigation -->
-        <?php endif; ?>
-
-
-            <?php if ( !is_single() && !is_page()) : ?>
-                <div class="site-branding">
-                <?php nadtheme_the_custom_logo(); ?>
                 <h1 class="site-title">
                     <a href="<?php echo esc_url(home_url('/')); ?>" rel="home"><?php bloginfo('name'); ?></a>
-                </h1>
+                </h1> <!-- .site-title -->
+
                 <?php $description = get_bloginfo('description', 'display');
                 if ($description || is_customize_preview()) : ?>
                     <p class="site-description"><?php echo $description; /* WPCS: xss ok. */ ?></p>
                 <?php endif; ?>
-<!--            --><?php //elseif (is_single()) : ?>
-<!--                <h2 class="site-title">-->
-<!--                    <a href="--><?php //echo esc_url(home_url('/')); ?><!--" rel="home">--><?php //bloginfo('name'); ?><!--</a>-->
-<!--                </h2>-->
-<!--                --><?php //the_title('<h1 class="entry-title">', '</h1>'); ?>
-<!--                --><?php //nadtheme_get_the_categories() ?>
-<!--            --><?php //elseif (is_archive()) : ?>
-<!--                <div class="page-header">-->
-<!--                    --><?php
-//                    the_archive_title( '<h1 class="page-title">', '</h1>' );
-//                    the_archive_description( '<div class="taxonomy-description">', '</div>' );
-//                    ?>
-<!--                </div>--><!-- .page-header -->
-                </div><!-- .site-branding -->
-
-            <?php endif; ?>
-
+            </div><!-- .site-branding -->
+        <?php endif; // Single and page check ?>
 
     </header><!-- #masthead -->
-    <?php endif; ?>
+    <?php endif; // 404 check ?>
+
 <div id="content" class="site-content">

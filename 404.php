@@ -4,7 +4,7 @@
  *
  * @link https://codex.wordpress.org/Creating_an_Error_404_Page
  *
- * @package nadtheme
+ * @package ndotone
  */
 
 get_header(); ?>
@@ -14,18 +14,17 @@ get_header(); ?>
 
 			<section class="error-404 not-found">
 				<header class="page-header">
-					<h1 class="page-title"><?php esc_html_e( '?', 'nadtheme' ); ?></h1>
-<!--					<p class="page-description">--><?php //esc_html_e( 'It seems you are lost.', 'nadtheme' ); ?><!--</p>-->
+					<h1 class="page-title"><?php esc_html_e( '?', 'ndotone' ); ?></h1>
 				</header><!-- .page-header -->
 
 				<div class="page-content">
-					<h2 class="no-404"><?php esc_html_e( '404', 'nadtheme' ); ?></h2>
-					<p><?php esc_html_e( 'It looks like nothing was found at this location. Maybe try one of the links below or a search?', 'nadtheme' ); ?> <a href="<?php echo esc_url(home_url('/')); ?>"><?php esc_html_e( 'Take me home.', 'nadtheme' ); ?></a></p>
+
+					<h2 class="no-404"><?php esc_html_e( '404', 'ndotone' ); ?></h2>
+					<p><?php esc_html_e( 'It looks like nothing was found at this location. Maybe try one of the links below or a search?', 'ndotone' ); ?> <a href="<?php echo esc_url(home_url('/')); ?>"><?php esc_html_e( 'Take me home.', 'ndotone' ); ?></a></p>
 
 					<?php
 						get_search_form();
 						the_widget( 'WP_Widget_Recent_Posts' );
-
 					?>
 
 				</div><!-- .page-content -->
@@ -33,6 +32,3 @@ get_header(); ?>
 
 		</main><!-- #main -->
 	</div><!-- #primary -->
-
-<?php
-//get_footer();

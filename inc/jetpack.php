@@ -4,7 +4,7 @@
  *
  * @link https://jetpack.com/
  *
- * @package nadtheme
+ * @package ndotone
  */
 
 /**
@@ -13,23 +13,23 @@
  * See: https://jetpack.com/support/infinite-scroll/
  * See: https://jetpack.com/support/responsive-videos/
  */
-function nadtheme_jetpack_setup() {
+function ndotone_jetpack_setup() {
 	// Add theme support for Infinite Scroll.
 	add_theme_support( 'infinite-scroll', array(
 		'container' => 'main',
-		'render'    => 'nadtheme_infinite_scroll_render',
+		'render'    => 'ndotone_infinite_scroll_render',
 		'footer'    => 'page',
 	) );
 
 	// Add theme support for Responsive Videos.
 	add_theme_support( 'jetpack-responsive-videos' );
 }
-add_action( 'after_setup_theme', 'nadtheme_jetpack_setup' );
+add_action( 'after_setup_theme', 'ndotone_jetpack_setup' );
 
 /**
  * Custom render function for Infinite Scroll.
  */
-function nadtheme_infinite_scroll_render() {
+function ndotone_infinite_scroll_render() {
 	while ( have_posts() ) {
 		the_post();
 		if ( is_search() ) :

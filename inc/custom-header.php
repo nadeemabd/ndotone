@@ -12,33 +12,33 @@
  *
  * @link https://developer.wordpress.org/themes/functionality/custom-headers/
  *
- * @package nadtheme
+ * @package ndotone
  */
 
 /**
  * Set up the WordPress core custom header feature.
  *
- * @uses nadtheme_header_style()
+ * @uses ndotone_header_style()
  */
-function nadtheme_custom_header_setup() {
-	add_theme_support( 'custom-header', apply_filters( 'nadtheme_custom_header_args', array(
-		'default-image'          => '',
-		'default-text-color'     => '000000',
-		'width'                  => 1000,
-		'height'                 => 250,
+function ndotone_custom_header_setup() {
+	add_theme_support( 'custom-header', apply_filters( 'ndotone_custom_header_args', array(
+		'default-image'          => get_stylesheet_directory_uri() . '/images/header.jpg',
+		'default-text-color'     => 'ffffff',
+		'width'                  => 1920,
+		'height'                 => 600,
 		'flex-height'            => true,
-		'wp-head-callback'       => 'nadtheme_header_style',
+		'wp-head-callback'       => 'ndotone_header_style',
 	) ) );
 }
-add_action( 'after_setup_theme', 'nadtheme_custom_header_setup' );
+add_action( 'after_setup_theme', 'ndotone_custom_header_setup' );
 
-if ( ! function_exists( 'nadtheme_header_style' ) ) :
+if ( ! function_exists( 'ndotone_header_style' ) ) :
 /**
  * Styles the header image and text displayed on the blog.
  *
- * @see nadtheme_custom_header_setup().
+ * @see ndotone_custom_header_setup().
  */
-function nadtheme_header_style() {
+function ndotone_header_style() {
 	$header_text_color = get_header_textcolor();
 
 	/*

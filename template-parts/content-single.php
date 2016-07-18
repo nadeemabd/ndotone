@@ -4,7 +4,7 @@
  *
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
- * @package nadtheme
+ * @package ndotone
  */
 
 ?>
@@ -18,7 +18,7 @@
 <!--    <header class="entry-header" style="background-image: url('<?php //echo the_post_thumbnail_url()?>')"> -->
     <header class="entry-header">
         <?php if ( is_sticky() && is_home() && ! is_paged() ) : ?>
-            <span class="sticky-post"><?php _e( 'Featured', 'nadtheme' ); ?></span>
+            <span class="sticky-post"><?php _e( 'Featured', 'ndotone' ); ?></span>
         <?php endif; ?>
 
         <?php
@@ -30,7 +30,7 @@
 
 //        if ( 'post' === get_post_type() ) : ?>
 <!--            <div class="entry-cats">-->
-<!--                --><?php //nadtheme_get_the_categories(); ?>
+<!--                --><?php //ndotone_get_the_categories(); ?>
 <!--            </div>--><!-- .entry-meta -->
 <!--            --><?php
 //        endif; ?>
@@ -38,7 +38,7 @@
     <div class="content-wrapper">
         <?php if ( 'post' === get_post_type() ) : ?>
             <div class="entry-meta">
-                <?php nadtheme_posted_on(); ?>
+                <?php ndotone_posted_on(); ?>
             </div><!-- .entry-meta -->
             <?php
         endif; ?>
@@ -47,7 +47,7 @@
                 the_content();
 
                 wp_link_pages( array(
-                    'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'nadtheme' ),
+                    'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'ndotone' ),
                     'after'  => '</div>',
                 ) );
 
@@ -55,7 +55,7 @@
         </div><!-- .entry-content -->
     </div>
     <footer class="entry-footer">
-        <?php nadtheme_entry_footer(); ?>
+        <?php ndotone_entry_footer(); ?>
     </footer><!-- .entry-footer -->
     <?php if ( '' !== get_the_author_meta( 'description' ) ) { ?>
         <div class="author-info-wrapper">

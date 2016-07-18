@@ -4,7 +4,7 @@
  *
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
- * @package nadtheme
+ * @package ndotone
  */
 
 ?>
@@ -27,12 +27,12 @@
 	<div class="post-content">
 		<header class="entry-header">
 			<?php if ( is_sticky() && is_home() && ! is_paged() ) : ?>
-				<span class="sticky-post"><?php _e( 'Featured', 'nadtheme' ); ?></span>
+				<span class="sticky-post"><?php _e( 'Featured', 'ndotone' ); ?></span>
 			<?php endif; ?>
 
 			<?php if ( 'post' === get_post_type() ) : ?>
 			<div class="entry-meta">
-				<?php nadtheme_posted_date(); ?>
+				<?php ndotone_posted_date(); ?>
 			</div><!-- .entry-meta-->
 			<?php
 			endif; ?>
@@ -53,6 +53,6 @@
 		</div><!-- .entry-content -->
 	</div>
 <!--	<footer class="entry-footer">-->
-<!--		--><?php //nadtheme_entry_footer(); ?>
+<!--		--><?php //ndotone_entry_footer(); ?>
 <!--	</footer>--><!-- .entry-footer -->
 </article><!-- #post-## -->

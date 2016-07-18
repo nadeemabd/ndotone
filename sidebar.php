@@ -1,10 +1,10 @@
 <?php
 /**
- * The sidebar containing the main widget area.
+ * The left sidebar containing the main widget area.
  *
  * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
  *
- * @package nadtheme
+ * @package ndotone
  */
 
 if ( ! is_active_sidebar( 'sidebar-1' ) ) {

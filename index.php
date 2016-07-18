@@ -9,7 +9,7 @@
  *
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
- * @package nadtheme
+ * @package ndotone
  */
 
 get_header(); ?>
@@ -26,7 +26,7 @@ get_header(); ?>
 				</header>
 
 			<?php
-			endif;
+			endif; // Home and front page check
 
 			/* Start the Loop */
 			while ( have_posts() ) : the_post();
@@ -38,41 +38,20 @@ get_header(); ?>
 				 */
 				get_template_part( 'template-parts/content', get_post_format() );
 
-			endwhile;
+			endwhile; // End of while loop
 
 			// Previous/next page navigation.
 			the_posts_pagination( array(
 					'mid_size'  		 => 2,
-					'prev_text'          => __( 'Previous', 'nadtheme' ),
-					'next_text'          => __( 'Next', 'nadtheme' ),
-					'before_page_number' => '<span class="meta-nav screen-reader-text">' . __( 'Page', 'nadtheme' ) . ' </span>',
+					'prev_text'          => __( 'Previous', 'ndotone' ),
+					'next_text'          => __( 'Next', 'ndotone' ),
+					'before_page_number' => '<span class="meta-nav screen-reader-text">' . __( 'Page', 'ndotone' ) . ' </span>',
 			) );
 
-//			$args = array(
-//					'base'               => '%_%',
-//					'format'             => '?paged=%#%',
-//					'total'              => 1,
-//					'current'            => 0,
-//					'show_all'           => false,
-//					'end_size'           => 1,
-//					'mid_size'           => 2,
-//					'prev_next'          => true,
-//					'prev_text'          => __('« Previous'),
-//					'next_text'          => __('Next »'),
-//					'type'               => 'plain',
-//					'add_args'           => false,
-//					'add_fragment'       => '',
-//					'before_page_number' => '',
-//					'after_page_number'  => ''
-//			);
-//
-//			echo paginate_links( $args );
-
 			else :
-
 			get_template_part( 'template-parts/content', 'none' );
 
-		endif; ?>
+		endif; // Have posts check ?>
 
 		</main><!-- #main -->
 	</div><!-- #primary -->
