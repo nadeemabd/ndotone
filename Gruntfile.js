@@ -13,7 +13,7 @@ module.exports = function (grunt) {
                     sourcemap: 'file'
                 },
                 files: {
-                    'style.css': 'sass/style.scss',
+                    'style.css': 'sass/style.scss'
                 }
             }
         },
