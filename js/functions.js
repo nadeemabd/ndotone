@@ -60,7 +60,7 @@
         // Add an initial values for the attribute.
         menuToggle.add(siteNavigation).attr('aria-expanded', 'false');
 
-        menuToggle.on('click.nadtheme', function () {
+        menuToggle.on('click.ndotone', function () {
             $( this ).add( siteNavigation ).toggleClass( 'toggled' );
 
             // jscs:disable
@@ -78,12 +78,12 @@
         // Toggle `focus` class to allow submenu access on tablets.
         function toggleFocusClassTouchScreen() {
             if (window.innerWidth >= windowWidth) {
-                $(document.body).on('touchstart.nadtheme', function (e) {
+                $(document.body).on('touchstart.ndotone', function (e) {
                     if (!$(e.target).closest('.main-navigation li').length) {
                         $('.main-navigation li').removeClass('focus');
                     }
                 });
-                siteNavigation.find('.menu-item-has-children > a').on('touchstart.nadtheme', function (e) {
+                siteNavigation.find('.menu-item-has-children > a').on('touchstart.ndotone', function (e) {
                     var el = $(this).parent('li');
 
                     if (!el.hasClass('focus')) {
@@ -93,16 +93,16 @@
                     }
                 });
             } else {
-                siteNavigation.find('.menu-item-has-children > a').unbind('touchstart.nadtheme');
+                siteNavigation.find('.menu-item-has-children > a').unbind('touchstart.ndotone');
             }
         }
 
         if ('ontouchstart' in window) {
-            $(window).on('resize.nadtheme', toggleFocusClassTouchScreen);
+            $(window).on('resize.ndotone', toggleFocusClassTouchScreen);
             toggleFocusClassTouchScreen();
         }
 
-        siteNavigation.find('a').on('focus.nadtheme blur.nadtheme', function () {
+        siteNavigation.find('a').on('focus.ndotone blur.ndotone', function () {
             $(this).parents('.menu-item').toggleClass('focus');
         });
     })();
@@ -184,10 +184,10 @@
      * Make sure content isn't too high
      */
 
-    (function adjustPosts() {
+    function adjustPosts() {
         $('.hfeed .post-content').each( function() {
             var $contain = $(this),
-                $innerContainHeight = 300,
+                $innerContainHeight = 210,
                 $header = $('.entry-header', this),
                 $headerHeight = $header.innerHeight(),
                 $content = $('.entry-content', this),
@@ -200,32 +200,29 @@
                 $contain.parent().removeClass('overflow');
             }
         } );
-    })();
+    }
 
     $(document).ready(function () {
         body = $(document.body);
 
         $(window)
-            .on('load.nadtheme', onResizeARIA)
-            .on('resize.nadtheme', function () {
+            .on('load.ndotone', function() {
+                onResizeARIA();
+                adjustPosts();
+            })
+            .on('resize.ndotone', function () {
                 clearTimeout(resizeTimer);
                 resizeTimer = setTimeout(function () {
                     belowEntryMetaClass('img.size-full');
                     belowEntryMetaClass('blockquote.alignleft, blockquote.alignright');
                 }, 300);
                 onResizeARIA();
-
-                //adjustPosts();
+                adjustPosts();
             });
 
         belowEntryMetaClass('img.size-full');
         belowEntryMetaClass('blockquote.alignleft, blockquote.alignright');
 
-        //$(".dropdown-toggle").click(function(){
-        //    $(this).next(".sub-menu").slideToggle('slow');
-        //});
     });
-
-    //adjustPosts();
 
 })(jQuery);
