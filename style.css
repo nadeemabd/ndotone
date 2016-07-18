@@ -1,20 +1,20 @@
 @charset "UTF-8";
 /*!
-Theme Name: nadtheme
-Theme URI: http://underscores.me/
+Theme Name: N. One
+Theme URI: http://nadeemabd.com/themes/ndotone
 Author: Nadeem Abdulla
-Author URI: http://nadeemabd.github.io/
-Description: A new cutting edge theme.
-Version: 1.0.0
+Author URI: http://nadeemabd.com/
+Description: A double-sidebar blog theme with minimal flat look and various color customisation options.
+Version: 1.0.1
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Text Domain: nadtheme
-Tags:
+Text Domain: ndotone
+Tags: blog, three-columns, left-sidebar, right-sidebar, sticky-post, custom-colors, custom-header, featured-image-header, featured-images, threaded-comments
 
 This theme, like WordPress, is licensed under the GPL.
 Use it to make something cool, have fun, and share what you've learned with others.
 
-nadtheme is based on Underscores http://underscores.me/, (C) 2012-2016 Automattic, Inc.
+ndotone is based on Underscores http://underscores.me/, (C) 2012-2016 Automattic, Inc.
 Underscores is distributed under the terms of the GNU GPL v2 or later.
 
 Normalizing styles have been helped along thanks to the fine work of
@@ -24,24 +24,19 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 >>> TABLE OF CONTENTS:
 ----------------------------------------------------------------
 # Normalize
-# Typography
 # Elements
-# Forms
+# Layout
+# Typography
 # Navigation
-	## Links
-	## Menus
+# Forms
 # Accessibility
 # Alignments
 # Clearings
-# Widgets
 # Content
-    ## Posts and pages
-	## Asides
-	## Comments
 # Infinite scroll
 # Media
-	## Captions
-	## Galleries
+# Footer
+# 404
 --------------------------------------------------------------*/
 /*--------------------------------------------------------------
 # Normalize
@@ -253,28 +248,139 @@ th {
 }
 
 /*--------------------------------------------------------------
+# Elements
+--------------------------------------------------------------*/
+html {
+  font-size: 62.5%;
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  /* Inherit box-sizing to make it easier to change the property for components that leverage other behavior; see http://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/ */
+  box-sizing: inherit;
+}
+
+body {
+  background: #fff;
+  /* Fallback for when there is no custom background color defined. */
+  direction: ltr;
+}
+
+hr {
+  background-color: #ccc;
+  border: 0;
+  height: 1px;
+  margin-bottom: 1.5em;
+}
+
+ul, ol {
+  margin: 0 0 2.5rem 2.5rem;
+  padding: 0;
+}
+
+ul {
+  list-style: disc;
+}
+
+ol {
+  list-style: decimal;
+}
+
+li > ul,
+li > ol {
+  margin-bottom: 0;
+  margin-left: 2.5rem;
+}
+
+dt {
+  font-weight: bold;
+}
+
+dd {
+  margin: 0 1.5em 1.5em;
+}
+
+img {
+  height: auto;
+  /* Make sure images are scaled correctly. */
+  max-width: 100%;
+  /* Adhere to container width. */
+}
+
+table {
+  margin: 0 0 1.5em;
+  width: 100%;
+  border: 1px solid #e3e3e3;
+  table-layout: fixed;
+}
+table tr, table td, table th {
+  border: 1px solid #e3e3e3;
+  padding: 10px;
+}
+
+.pagination .nav-links {
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 2.5rem;
+  font-family: "Roboto Condensed", serif;
+  font-size: 18px;
+  font-size: 1.8rem;
+  color: #888888;
+}
+.pagination a {
+  color: #888888;
+}
+.pagination a:hover, .pagination a:focus {
+  color: #FF561C;
+}
+.pagination .prev, .pagination .next {
+  text-transform: uppercase;
+  margin: 0 2.5rem;
+}
+.pagination .prev:hover, .pagination .prev:focus, .pagination .next:hover, .pagination .next:focus {
+  color: #FF561C;
+}
+.pagination .page-numbers {
+  margin: 0 1.25rem;
+}
+.pagination .page-numbers.current {
+  color: #262626;
+  border: 1px solid #262626;
+  padding: 0 15px;
+}
+
+/*--------------------------------------------------------------
 # Layout
 --------------------------------------------------------------*/
-body.no-sidebar .content-area {
+body.no-sidebar:not(.hfeed) .content-area {
   width: 60%;
   margin-left: auto;
   margin-right: auto;
 }
-body.no-sidebar .content-area .entry-title,
-body.no-sidebar .content-area .entry-content,
-body.no-sidebar .content-area .entry-meta,
-body.no-sidebar .content-area .entry-footer span,
-body.no-sidebar .content-area .author-info,
-body.no-sidebar .content-area .comment-respond,
-body.no-sidebar .content-area .comment-body,
-body.no-sidebar .content-area .comment-navigation .nav-links,
-body.no-sidebar .content-area .comments-title {
+body.no-sidebar:not(.hfeed) .content-area .entry-title,
+body.no-sidebar:not(.hfeed) .content-area .entry-content,
+body.no-sidebar:not(.hfeed) .content-area .entry-meta,
+body.no-sidebar:not(.hfeed) .content-area .entry-footer span,
+body.no-sidebar:not(.hfeed) .content-area .author-info,
+body.no-sidebar:not(.hfeed) .content-area .comment-respond,
+body.no-sidebar:not(.hfeed) .content-area .comment-body,
+body.no-sidebar:not(.hfeed) .content-area .comment-navigation .nav-links,
+body.no-sidebar:not(.hfeed) .content-area .comments-title {
   max-width: 80rem;
 }
+@media screen and (max-width: 1440px) {
+  body.no-sidebar:not(.hfeed) .content-area {
+    width: 100%;
+  }
+}
+
 body.no-sidebar .site-info,
 body.no-sidebar .social-navigation,
 body.no-sidebar .site-copyright {
-  background-color: #fff;
+  background-color: transparent;
 }
 body.no-sidebar .site-copyright {
   border-top: none;
@@ -283,9 +389,6 @@ body.no-sidebar .site-footer {
   border-top: 1px solid #e3e3e3;
 }
 @media screen and (max-width: 1440px) {
-  body.no-sidebar .content-area {
-    width: 100%;
-  }
   body.no-sidebar .site-info,
   body.no-sidebar .social-navigation {
     border-top: none;
@@ -315,7 +418,7 @@ body.no-left-sidebar:not(.hfeed) .content-area .comments-title {
 }
 
 body.no-left-sidebar .site-info {
-  background-color: #fff;
+  background-color: transparent;
   border-top: 1px solid #e3e3e3;
 }
 @media screen and (max-width: 1440px) {
@@ -347,13 +450,15 @@ body.no-right-sidebar:not(.hfeed) .content-area .comments-title {
   }
 }
 
-body.no-right-sidebar .site-copyright {
-  background-color: #fff;
+body.no-right-sidebar .social-navigation {
+  background-color: transparent;
   border-top: 1px solid #e3e3e3;
 }
-body.no-right-sidebar .social-navigation {
-  background-color: #fff;
-  border-top: 1px solid #e3e3e3;
+@media screen and (max-width: 1440px) {
+  body.no-right-sidebar .site-copyright {
+    background-color: transparent;
+    border-top: 1px solid #e3e3e3;
+  }
 }
 @media screen and (max-width: 1170px) {
   body.no-right-sidebar .social-navigation,
@@ -378,7 +483,6 @@ body.no-right-sidebar .social-navigation {
   -webkit-order: 2;
       -ms-flex-order: 2;
           order: 2;
-  background-color: #fff;
   width: 50%;
   padding-bottom: 20rem;
 }
@@ -529,6 +633,68 @@ h6 {
   font-style: italic;
 }
 
+@media screen and (max-width: 1200px) {
+  h1 {
+    font-size: 40px;
+    font-size: 4rem;
+  }
+
+  h2 {
+    font-size: 32px;
+    font-size: 3.2rem;
+  }
+
+  h3 {
+    font-size: 28px;
+    font-size: 2.8rem;
+  }
+
+  h4 {
+    font-size: 18px;
+    font-size: 1.8rem;
+  }
+
+  h5 {
+    font-size: 16px;
+    font-size: 1.6rem;
+  }
+
+  h6 {
+    font-size: 16px;
+    font-size: 1.6rem;
+  }
+}
+@media screen and (max-width: 900px) {
+  h1 {
+    font-size: 36px;
+    font-size: 3.6rem;
+  }
+
+  h2 {
+    font-size: 28px;
+    font-size: 2.8rem;
+  }
+
+  h3 {
+    font-size: 20px;
+    font-size: 2rem;
+  }
+
+  h4 {
+    font-size: 16px;
+    font-size: 1.6rem;
+  }
+
+  h5 {
+    font-size: 14px;
+    font-size: 1.4rem;
+  }
+
+  h6 {
+    font-size: 14px;
+    font-size: 1.4rem;
+  }
+}
 p {
   margin: 0 0 2.5rem;
 }
@@ -571,6 +737,18 @@ blockquote cite {
   font-size: 1.4rem;
   line-height: 1.75;
 }
+@media screen and (max-width: 1200px) {
+  blockquote {
+    font-size: 16px;
+    font-size: 1.6rem;
+  }
+  blockquote:before {
+    top: -10px;
+    left: -20px;
+    font-size: 48px;
+    font-size: 4.8rem;
+  }
+}
 
 address {
   margin: 0 0 2.5rem;
@@ -586,6 +764,8 @@ pre {
   max-width: 100%;
   overflow: auto;
   padding: 1.6em;
+  white-space: pre-wrap;
+  word-wrap: break-word;
 }
 
 code, kbd, tt, var {
@@ -625,9 +805,6 @@ a {
   text-decoration: none;
   transition: color .5s, background-color .5s, border-color .5s, opacity .5s;
 }
-a:visited {
-  color: #FF561C;
-}
 a:hover, a:focus, a:active {
   color: #888888;
 }
@@ -641,7 +818,6 @@ a:hover, a:active {
 /*--------------------------------------------------------------
 ## Menus
 --------------------------------------------------------------*/
-/* Styles for mobile menu*/
 .menu-toggle,
 .main-navigation.toggled .menu {
   display: block;
@@ -704,7 +880,6 @@ a:hover, a:active {
           flex: 1 0 100%;
 }
 
-/* Screen >= 900px */
 @media screen and (min-width: 1170px) {
   .menu-toggle {
     display: none;
@@ -763,7 +938,7 @@ a:hover, a:active {
 .main-navigation {
   background-color: #262626;
   padding: 0 2.5rem;
-  position: absolute;
+  position: relative;
   top: 0;
   z-index: 999;
   width: 100%;
@@ -781,7 +956,7 @@ a:hover, a:active {
   float: right;
 }
 .main-navigation ul {
-  padding: 2.5rem 0;
+  padding: 5rem 0;
 }
 .main-navigation ul ul {
   padding: 0;
@@ -1009,110 +1184,6 @@ a:hover, a:active {
 }
 
 /*--------------------------------------------------------------
-# Elements
---------------------------------------------------------------*/
-html {
-  font-size: 62.5%;
-  box-sizing: border-box;
-}
-
-*,
-*:before,
-*:after {
-  /* Inherit box-sizing to make it easier to change the property for components that leverage other behavior; see http://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/ */
-  box-sizing: inherit;
-}
-
-body {
-  background: #fff;
-  /* Fallback for when there is no custom background color defined. */
-  direction: ltr;
-}
-
-hr {
-  background-color: #ccc;
-  border: 0;
-  height: 1px;
-  margin-bottom: 1.5em;
-}
-
-ul, ol {
-  margin: 0 0 2.5rem 2.5rem;
-  padding: 0;
-}
-
-ul {
-  list-style: disc;
-}
-
-ol {
-  list-style: decimal;
-}
-
-li > ul,
-li > ol {
-  margin-bottom: 0;
-  margin-left: 2.5rem;
-}
-
-dt {
-  font-weight: bold;
-}
-
-dd {
-  margin: 0 1.5em 1.5em;
-}
-
-img {
-  height: auto;
-  /* Make sure images are scaled correctly. */
-  max-width: 100%;
-  /* Adhere to container width. */
-}
-
-table {
-  margin: 0 0 1.5em;
-  width: 100%;
-  border: 1px solid #e3e3e3;
-}
-table tr, table td, table th {
-  border: 1px solid #e3e3e3;
-  padding: 10px;
-}
-
-.pagination .nav-links {
-  -webkit-justify-content: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  padding: 2.5rem;
-  font-family: "Roboto Condensed", serif;
-  font-size: 18px;
-  font-size: 1.8rem;
-  color: #888888;
-}
-.pagination a {
-  color: #888888;
-}
-.pagination a:hover, .pagination a:focus {
-  color: #FF561C;
-}
-.pagination .prev, .pagination .next {
-  text-transform: uppercase;
-  margin: 0 2.5rem;
-}
-.pagination .prev:hover, .pagination .prev:focus, .pagination .next:hover, .pagination .next:focus {
-  color: #FF561C;
-}
-.pagination .page-numbers {
-  margin: 0 1.25rem;
-}
-.pagination .page-numbers.current {
-  color: #262626;
-  border: 1px solid #262626;
-  padding: 0 15px;
-}
-
-/*--------------------------------------------------------------
 # Forms
 --------------------------------------------------------------*/
 button,
@@ -1122,7 +1193,6 @@ input[type="submit"] {
   border: 1px solid;
   border-color: #888888;
   background: transparent;
-  color: rgba(0, 0, 0, 0.8);
   padding: .6em 1em .4em;
   transition: color .5s, background-color .5s, border-color .5s;
 }
@@ -1161,6 +1231,7 @@ input[type="datetime"],
 input[type="datetime-local"],
 input[type="color"],
 textarea {
+  background-color: transparent;
   color: #888888;
   border: 1px solid #e3e3e3;
   display: block;
@@ -1240,6 +1311,26 @@ textarea {
   font-family: "Roboto Condensed", serif;
   margin-bottom: 2.5rem;
   text-transform: uppercase;
+}
+
+::-webkit-input-placeholder {
+  color: #888888;
+  opacity: 1;
+}
+
+::-moz-placeholder {
+  color: #888888;
+  opacity: 1;
+}
+
+:-ms-input-placeholder {
+  color: #888888;
+  opacity: 1;
+}
+
+::placeholder {
+  color: #888888;
+  opacity: 1;
 }
 
 .search-form {
@@ -1347,9 +1438,6 @@ textarea {
   clear: both;
 }
 
-/*--------------------------------------------------------------
-# Widgets
---------------------------------------------------------------*/
 /*--------------------------------------------------------------
 # Content
 --------------------------------------------------------------*/
@@ -1490,6 +1578,7 @@ textarea {
 @media screen and (max-width: 900px) {
   .hfeed .hentry {
     display: block;
+    text-align: center;
   }
   .hfeed .post-content {
     max-height: none;
@@ -1504,7 +1593,7 @@ body.single .post-thumbnail, body.page .post-thumbnail {
   position: absolute;
   top: 0;
   left: 0;
-  height: 60rem;
+  height: 63vh;
   width: 100%;
   background-size: cover;
   background-position: center;
@@ -1531,18 +1620,37 @@ body.page .page-title {
   max-width: 60rem;
   margin: 0 auto;
 }
+@media screen and (max-width: 600px) {
+  body.single .content-wrapper,
+  body.single .entry-header, body.page .content-wrapper,
+  body.page .entry-header {
+    padding-left: 5rem;
+    padding-right: 5rem;
+  }
+}
 body.search .page-content {
   padding: 5rem 18.47084%;
 }
 
 .alignleft {
   margin-left: -29.29167%;
+  max-width: 50%;
 }
 
 .alignright {
   margin-right: -29.29167%;
+  max-width: 50%;
 }
 
+@media screen and (max-width: 600px) {
+  .alignleft {
+    margin-left: -5rem;
+  }
+
+  .alignright {
+    margin-right: -5rem;
+  }
+}
 .byline,
 .updated:not(.published) {
   display: none;
@@ -1623,6 +1731,12 @@ body.search .page-content {
   color: #FF561C;
 }
 
+@media screen and (max-width: 600px) {
+  .entry-footer {
+    padding-left: 5rem;
+    padding-right: 5rem;
+  }
+}
 .author-info-wrapper {
   padding: 2.5rem 18.47084%;
   border-bottom: 1px solid #e3e3e3;
@@ -1667,6 +1781,12 @@ body.search .page-content {
   margin-bottom: 0;
 }
 
+@media screen and (max-width: 600px) {
+  .author-info-wrapper {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+}
 .navigation .nav-links {
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1887,6 +2007,16 @@ body.search .page-content {
   font-size: 1.2rem;
 }
 
+@media screen and (max-width: 600px) {
+  .comments-title-wrapper,
+  .comment-navigation,
+  .comment-list > .comment,
+  .no-comments,
+  .comment-form-wrapper {
+    padding-left: 5rem;
+    padding-right: 5rem;
+  }
+}
 /*--------------------------------------------------------------
 ## Secondary
 --------------------------------------------------------------*/
@@ -1981,22 +2111,6 @@ body.search .page-content {
 .widget .search-field:focus {
   border-color: #FF561C;
   color: #fff;
-}
-.widget .search-field::-webkit-input-placeholder {
-  color: #888888;
-  opacity: 1;
-}
-.widget .search-field::-moz-placeholder {
-  color: #888888;
-  opacity: 1;
-}
-.widget .search-field:-ms-input-placeholder {
-  color: #888888;
-  opacity: 1;
-}
-.widget .search-field::placeholder {
-  color: #888888;
-  opacity: 1;
 }
 .widget table {
   border-color: #888888;
@@ -2207,7 +2321,7 @@ object {
 # Header
 --------------------------------------------------------------*/
 .site-header {
-  height: 60rem;
+  height: 63vh;
   background-size: cover;
   background-position: center;
   display: -webkit-flex;
@@ -2258,7 +2372,6 @@ object {
   z-index: 99999;
   top: 0;
   left: 0;
-  max-width: 25%;
   margin: 0;
 }
 .side-title .go-home {
@@ -2287,6 +2400,18 @@ object {
   background-color: #FF561C;
 }
 
+@media screen and (max-width: 900px) {
+  .side-title .custom-logo {
+    height: 5.5rem;
+    width: 5.5rem;
+  }
+
+  .custom-logo {
+    border-radius: 50%;
+    height: 8rem;
+    width: 8rem;
+  }
+}
 /*--------------------------------------------------------------
 # Footer
 --------------------------------------------------------------*/
@@ -2335,7 +2460,6 @@ object {
           align-items: center;
   border-top: 1px solid #e3e3e3;
   padding: 2.5rem;
-  background-color: #fff;
 }
 
 .footer-menu {
@@ -2362,9 +2486,6 @@ object {
     -webkit-flex-direction: column;
         -ms-flex-direction: column;
             flex-direction: column;
-    -webkit-align-items: center;
-        -ms-flex-align: center;
-            align-items: center;
     background-color: #262626;
   }
   .site-footer .site-copyright .copy {
@@ -2402,6 +2523,9 @@ object {
             order: 1;
   }
 }
+/*--------------------------------------------------------------
+# 404
+--------------------------------------------------------------*/
 body.error404 {
   background: #262626;
 }
