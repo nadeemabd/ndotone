@@ -14,15 +14,13 @@ module.exports = function (grunt) {
                 },
                 files: {
                     'style.css': 'sass/style.scss',
-                    'layouts/single-sidebar.css' : 'sass/layout/_single-sidebar.scss',
-                    'layouts/no-sidebar.css' : 'sass/layout/_no-sidebar.scss'
                 }
             }
         },
 
         autoprefixer: {
             options: {
-                browsers: ['last 3 versions']
+                browsers: ['last 2 versions']
             },
             multiple_files: {
                 expand: true,
