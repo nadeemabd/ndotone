@@ -316,6 +316,9 @@ function ndotone_custom_infinite_more() {
 }
 add_action( 'wp_footer', 'ndotone_custom_infinite_more', 3 );
 
+// Stop JetPacks Minified/Concatention CSS file
+add_filter( 'jetpack_implode_frontend_css', '__return_false' );
+
 /**
  * Set custom widget cloud text size
  *
